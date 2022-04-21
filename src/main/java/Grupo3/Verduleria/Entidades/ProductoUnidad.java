@@ -7,7 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 
-public class productoUnidad {
+public class ProductoUnidad {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -17,10 +17,10 @@ public class productoUnidad {
     private Integer precio;
     private Integer unidad;
 
-    public productoUnidad() {
+    public ProductoUnidad() {
     }
 
-    public productoUnidad(String nombre, Integer precio, Integer unidad) {
+    public ProductoUnidad(String nombre, Integer precio, Integer unidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.unidad = unidad;
