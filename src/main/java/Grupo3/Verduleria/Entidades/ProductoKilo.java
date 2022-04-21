@@ -6,6 +6,10 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+<<<<<<< HEAD
+=======
+
+>>>>>>> 349c3419ccc26f57ed1fc12b08a6ffec70b08bfe
 public class ProductoKilo {
 
     @Id
@@ -53,7 +57,7 @@ public class ProductoKilo {
         return kilo;
     }
 
-    public void setKilos(Integer kilo) {
+    public void setKilo(Integer kilo) {
         this.kilo = kilo;
     }
 

@@ -16,6 +16,10 @@ public class Clientes {
     private Long dni;
     private String correo;
 
+    public Clientes() {
+    }
+
+    
     public Clientes(String nombre, Long dni, String correo) {
         this.nombre = nombre;
         this.dni = dni;
