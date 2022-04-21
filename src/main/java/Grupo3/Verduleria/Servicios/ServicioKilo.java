@@ -1,6 +1,6 @@
 package Grupo3.Verduleria.Servicios;
 
-import Grupo3.Verduleria.Entidades.productoKilo;
+import Grupo3.Verduleria.Entidades.ProductoKilo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import Grupo3.Verduleria.Repositorios.RepositorioKilo;
@@ -25,13 +25,13 @@ public class ServicioKilo {
             
     //// CURD
     
-    public productoKilo save(String nombre, Integer precio, Integer kilo){
+    public ProductoKilo save(String nombre, Integer precio, Integer kilo){
         try {
             Validator(nombre,precio,kilo);
         } catch (Exception e) {
             System.out.println(e);
         }
-      productoKilo PK = new productoKilo();
+      ProductoKilo PK = new ProductoKilo();
    
    
         return repositorioKilo.save(PK);

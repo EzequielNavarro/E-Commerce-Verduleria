@@ -6,8 +6,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-
-public class productoUnidad {
+public class ProductoKilo {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -15,15 +14,15 @@ public class productoUnidad {
     private String id;
     private String nombre;
     private Integer precio;
-    private Integer unidad;
+    private Integer kilo;
 
-    public productoUnidad() {
+    public ProductoKilo() {
     }
 
-    public productoUnidad(String nombre, Integer precio, Integer unidad) {
+    public ProductoKilo(String nombre, Integer precio, Integer kilo) {
         this.nombre = nombre;
         this.precio = precio;
-        this.unidad = unidad;
+        this.kilo = kilo;
     }
 
     public String getId() {
@@ -50,19 +49,18 @@ public class productoUnidad {
         this.precio = precio;
     }
 
-    public Integer getUnidad() {
-        return unidad;
+    public Integer getKilo() {
+        return kilo;
     }
 
-    public void setUnidad(Integer unidad) {
-        this.unidad = unidad;
+    public void setKilos(Integer kilo) {
+        this.kilo = kilo;
     }
 
     @Override
     public String toString() {
-        return "productoUnidad{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad + '}';
+        return "productoKilo{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", kilo=" + kilo + '}';
     }
-
     
     
 }
