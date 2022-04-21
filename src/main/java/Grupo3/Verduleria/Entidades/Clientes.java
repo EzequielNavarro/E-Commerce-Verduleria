@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Clientes {
 
-        @Id
+    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
@@ -19,7 +19,6 @@ public class Clientes {
     public Clientes() {
     }
 
-    
     public Clientes(String nombre, Long dni, String correo) {
         this.nombre = nombre;
         this.dni = dni;
@@ -62,7 +61,5 @@ public class Clientes {
     public String toString() {
         return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", correo=" + correo + '}';
     }
-    
-    
-    
+
 }

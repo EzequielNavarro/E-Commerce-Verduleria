@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-
 public class ProductoKilo {
 
     @Id
@@ -62,6 +61,5 @@ public class ProductoKilo {
     public String toString() {
         return "productoKilo{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", kilo=" + kilo + '}';
     }
-    
-    
+
 }
