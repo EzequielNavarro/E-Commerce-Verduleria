@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Verduleria Del Pueblo">
+  <ClassDiagramComponents>
+    <Class name="productoKilo" package="" visibility="public" xPosition="98.0" yPosition="24.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="precio" type="Interger" visibility="private"/>
+        <Field name="kilos" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Clientes" package="" visibility="public" xPosition="970.0" yPosition="24.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="dni" type="Long" visibility="private"/>
+        <Field name="correo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="repositorioUnidad" package="" visibility="public" xPosition="570.0" yPosition="309.0">
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="repositorioKilo" package="" visibility="public" xPosition="24.0" yPosition="475.0">
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="productoUnidad" package="" visibility="public" xPosition="410.0" yPosition="31.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="precio" type="Integer" visibility="private"/>
+        <Field name="unidad" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="servicioKilo" package="" visibility="public" xPosition="162.0" yPosition="287.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="servicioUnidad" package="" visibility="public" xPosition="366.0" yPosition="284.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="servicioClientes" package="" visibility="public" xPosition="932.0" yPosition="284.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="repositorioClientes" package="" visibility="public" xPosition="735.0" yPosition="456.0">
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="controladorClientes" package="" visibility="public" xPosition="1140.0" yPosition="435.0">
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+        <Method name="untitledMethod1" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="controladorProducto" package="" visibility="public" xPosition="320.0" yPosition="549.0">
+      <Methods>
+        <Method name="CRUD" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="id" source="productoUnidad" target="servicioUnidad" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="servicioKilo" target="repositorioKilo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="servicioClientes" target="repositorioClientes" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="id" source="Clientes" target="servicioClientes" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="id" source="productoKilo" target="servicioKilo" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="controladorProducto" target="servicioKilo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="controladorProducto" target="servicioUnidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="servicioUnidad" target="repositorioUnidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="controladorClientes" target="servicioClientes" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
