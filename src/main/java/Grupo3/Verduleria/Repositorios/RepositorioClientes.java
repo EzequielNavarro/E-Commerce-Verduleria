@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface RepositorioClientes  extends JpaRepository<Clientes, String> {
     
     @Query("SELECT c FROM Clientes c WHERE dni = :dni")
-    public Clientes buscarPorDNI(@Param("dni")String dni);
+    public Clientes buscarPorDNI(@Param("dni")Long dni);
 }
