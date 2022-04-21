@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-
 public class ProductoKilo {
 
     @Id
