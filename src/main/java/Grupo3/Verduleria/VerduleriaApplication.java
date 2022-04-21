@@ -10,6 +10,7 @@ public class VerduleriaApplication {
 		SpringApplication.run(VerduleriaApplication.class, args);
                 // SOY EL DEVLOP
                 //Hola soy Ezequiel
+                // rapido
 	}
 
 }
