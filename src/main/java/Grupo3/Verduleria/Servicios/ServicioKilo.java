@@ -27,18 +27,7 @@ public class ServicioKilo {
     }
 
     //// CURD
-<<<<<<< HEAD
-    
-    public ProductoKilo save(String nombre, Integer precio, Integer kilo){
-        try {
-            Validator(nombre,precio,kilo);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-      ProductoKilo PK = new ProductoKilo();
-   
-   
-=======
+
     @Transactional
     public ProductoKilo save(String nombre, Integer precio, Integer kilo) throws Exception {
         Validator(nombre, precio, kilo);
@@ -48,7 +37,6 @@ public class ServicioKilo {
         PK.setNombre(nombre);
         PK.setPrecio(precio);
         PK.setKilo(kilo);
->>>>>>> 349c3419ccc26f57ed1fc12b08a6ffec70b08bfe
         return repositorioKilo.save(PK);
     }
 

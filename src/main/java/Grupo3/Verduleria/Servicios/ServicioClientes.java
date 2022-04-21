@@ -13,9 +13,8 @@ public class ServicioClientes {
 
     @Autowired
     private RepositorioClientes repositorioClientes;
-   
 
-    public void Validator(String nombre, Long dni,String correo) throws Exception {
+    public void Validator(String nombre, Long dni, String correo) throws Exception {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new Exception("El nombre no es valido");
         }
@@ -59,17 +58,17 @@ public class ServicioClientes {
     }
 
     @Transactional(readOnly = true)
-    public List<Clientes> findAll()  throws Exception {
+    public List<Clientes> findAll() throws Exception {
         return repositorioClientes.findAll();
     }
 
-     @Transactional(readOnly = true)
-    public Clientes findById(String id)  throws Exception{
-        return  repositorioClientes.getById(id);
-    }
-    
     @Transactional(readOnly = true)
-    public Clientes buscarPorDNI (Long dni) throws Exception{
+    public Clientes findById(String id) throws Exception {
+        return repositorioClientes.getById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Clientes buscarPorDNI(Long dni) throws Exception {
         return repositorioClientes.buscarPorDNI(dni);
 
     }

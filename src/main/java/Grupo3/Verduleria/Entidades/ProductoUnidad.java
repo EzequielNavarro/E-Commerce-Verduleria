@@ -6,10 +6,6 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-<<<<<<< HEAD
-=======
-
->>>>>>> 349c3419ccc26f57ed1fc12b08a6ffec70b08bfe
 public class ProductoUnidad {
 
     @Id
