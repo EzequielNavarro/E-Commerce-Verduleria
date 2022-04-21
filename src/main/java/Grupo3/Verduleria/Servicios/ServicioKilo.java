@@ -1,15 +1,15 @@
 package Grupo3.Verduleria.Servicios;
 
 import Grupo3.Verduleria.Entidades.productoKilo;
-import Grupo3.Verduleria.Repositorios.repositorioKilo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import Grupo3.Verduleria.Repositorios.RepositorioKilo;
 
 @Service
-public class servicioKilo {
+public class ServicioKilo {
 
     @Autowired
-    private repositorioKilo repositorioKilo;
+    private RepositorioKilo repositorioKilo;
 
     public void Validator(String nombre, Integer precio, Integer kilo) throws Exception{
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -34,7 +34,7 @@ public class servicioKilo {
       productoKilo PK = new productoKilo();
    
    
-        return repositorioKilo.save(pk);
+        return repositorioKilo.save(PK);
     }
     
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface repositorioUnidad  extends JpaRepository<productoUnidad, String>{
+public interface RepositorioUnidad  extends JpaRepository<productoUnidad, String>{
 
 }

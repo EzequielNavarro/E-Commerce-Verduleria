@@ -1,12 +1,13 @@
 package Grupo3.Verduleria.Servicios;
 
-import Grupo3.Verduleria.Repositorios.repositorioClientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import Grupo3.Verduleria.Repositorios.RepositorioUnidad;
 
 @Service
-public class servicioClientes {
+public class ServicioUnidad {
 
     @Autowired
-    private repositorioClientes repositorioClientes;
+    private RepositorioUnidad repositorioUnidad;
+
 }
