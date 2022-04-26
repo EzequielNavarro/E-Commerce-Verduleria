@@ -1,0 +1,29 @@
+.contenedorFoto{
+    height: 100px;
+    width: 100px;
+
+    align-items: center;
+   
+    
+}
+
+#titulo{
+    text-align: center;
+    color: #f0414166;
+    font-size: 300%;
+
+}
+.carousel-inner {
+    display: block;
+    max-width: 100%;
+    height: 50%;
+    position: relative;
+    
+
+}
+
+.carousel-item {
+    position: absolute;
+    top: 50%;
+    margin-top: -40vh;
+}
