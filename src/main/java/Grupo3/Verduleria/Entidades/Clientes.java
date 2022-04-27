@@ -13,18 +13,24 @@ public class Clientes {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
+    private String clave;
     private Long dni;
     private String correo;
 
     public Clientes() {
     }
 
-    
-    public Clientes(String nombre, Long dni, String correo) {
+    public Clientes(String nombre, String clave, Long dni, String correo) {
         this.nombre = nombre;
+        this.clave = clave;
         this.dni = dni;
         this.correo = correo;
     }
+
+   
+
+    
+    
 
     public String getId() {
         return id;
@@ -58,10 +64,22 @@ public class Clientes {
         this.correo = correo;
     }
 
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
     @Override
     public String toString() {
-        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", correo=" + correo + '}';
+        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", clave=" + clave + ", dni=" + dni + ", correo=" + correo + '}';
     }
+
+
+
+    
     
     
     

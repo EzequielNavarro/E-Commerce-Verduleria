@@ -4,19 +4,36 @@ import Grupo3.Verduleria.Entidades.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import Grupo3.Verduleria.Repositorios.RepositorioClientes;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class ServicioClientes {
+public class ServicioClientes implements UserDetailsService{
 
     @Autowired
     private RepositorioClientes repositorioClientes;
 
-    public void Validator(String nombre, Long dni, String correo) throws Exception {
+    public void Validator(String nombre,String clave,String clave2, Long dni, String correo) throws Exception {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new Exception("El nombre no es valido");
+        }
+        if (clave == null || clave.isEmpty() || clave.length() <6) {
+            throw new Exception("La clave no puede ser nula y tiene que tener mas de 6 carácteres");
+        }
+        if (!clave.equals(clave2)) {
+            throw new Exception("Las claves no pueden ser distintas");
         }
         if (dni == null || dni < 1) {
             throw new Exception("El dni no es valido");
@@ -28,18 +45,22 @@ public class ServicioClientes {
 
     //// CURD
     @Transactional
-    public Clientes save(String nombre, Long dni, String correo) throws Exception {
-        Validator(nombre, dni, correo);
+    public Clientes save(String nombre,String clave,String clave2, Long dni, String correo) throws Exception {
+        Validator(nombre,clave,clave2, dni, correo);
 
         Clientes CT = new Clientes();
         CT.setNombre(nombre);
+        
+        String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
+        CT.setClave(claveEncriptada);
+        
         CT.setDni(dni);
         CT.setCorreo(correo);
         return repositorioClientes.save(CT);
     }
 
     @Transactional
-    public Clientes edit(String id, String nombre, Long dni, String correo) throws Exception {
+    public Clientes edit(String id,String clave, String nombre, Long dni, String correo) throws Exception {
         Optional<Clientes> respuesta = repositorioClientes.findById(id);
         if (respuesta.isPresent()) {
             Clientes CT = respuesta.get();
@@ -71,6 +92,29 @@ public class ServicioClientes {
     public Clientes buscarPorDNI(Long dni) throws Exception {
         return repositorioClientes.buscarPorDNI(dni);
 
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
+            Clientes cliente = repositorioClientes.buscarPorMail(correo);
+        if (cliente != null) {
+
+            List<GrantedAuthority> permisos = new ArrayList<>();
+            GrantedAuthority permiso1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+            permisos.add(permiso1);
+            
+            //Guarda la session de usuario. el usuario lo guarda en "usuariosession"
+            //session guarda los datos de "usuariosession" y se puede manipular en html/thymeleaf
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", cliente);
+
+
+            User user = new User(cliente.getCorreo(), cliente.getClave(), permisos);
+            return user;
+        }else{
+            return null;
+        }
     }
 
 }
