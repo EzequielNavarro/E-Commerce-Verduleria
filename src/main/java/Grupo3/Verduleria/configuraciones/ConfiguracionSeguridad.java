@@ -38,7 +38,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
                 .defaultSuccessUrl("/inicio").permitAll()
             .and().logout() 
                 .logoutUrl("/logout")  		
-                .logoutSuccessUrl("/").permitAll()	
+                .logoutSuccessUrl("/?logout").permitAll()	
             .and().csrf().disable();
     }
 }
