@@ -25,15 +25,18 @@ public class ServicioClientes implements UserDetailsService {
     @Autowired
     private RepositorioClientes repositorioClientes;
 
+
     public void Validator(String nombre, String clave, String clave2, Long dni, String correo) throws Exception {
+
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new Exception("El nombre no es valido");
         }
         if (clave == null || clave.isEmpty() || clave.length() < 6) {
             throw new Exception("La clave no puede ser nula y tiene que tener mas de 6 carácteres");
         }
-        if (clave != clave2) {
-            throw new Exception("Las claves no coinciden");
+
+        if (!clave.equals(clave2)) {
+            throw new Exception("Las claves no pueden ser distintas");
         }
         if (dni == null || dni < 1) {
             throw new Exception("El dni no es valido");
@@ -45,8 +48,9 @@ public class ServicioClientes implements UserDetailsService {
 
     //// CURD
     @Transactional
-    public Clientes save(String nombre, String clave, String clave2, Long dni, String correo) throws Exception {
-        Validator(nombre, clave, clave2, dni, correo);
+
+    public Clientes save(String nombre,String clave,String clave2, Long dni, String correo) throws Exception {
+        Validator(nombre,clave,clave2, dni, correo);
 
         Clientes CT = new Clientes();
         CT.setNombre(nombre);
