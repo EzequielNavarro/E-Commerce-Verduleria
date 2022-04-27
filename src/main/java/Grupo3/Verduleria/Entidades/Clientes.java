@@ -1,6 +1,9 @@
 package Grupo3.Verduleria.Entidades;
 
+import Grupo3.Verduleria.enums.Role;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,7 +19,9 @@ public class Clientes {
     private String clave;
     private Long dni;
     private String correo;
-
+    @Enumerated (EnumType.STRING)
+    private Role role;
+    
     public Clientes() {
     }
 
@@ -67,6 +72,15 @@ public class Clientes {
         this.clave = clave;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    
     @Override
     public String toString() {
         return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", clave=" + clave + ", dni=" + dni + ", correo=" + correo + '}';

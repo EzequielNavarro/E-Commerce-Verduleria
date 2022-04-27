@@ -4,6 +4,7 @@ import Grupo3.Verduleria.Entidades.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import Grupo3.Verduleria.Repositorios.RepositorioClientes;
+import Grupo3.Verduleria.enums.Role;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,6 @@ public class ServicioClientes implements UserDetailsService {
 
     @Autowired
     private RepositorioClientes repositorioClientes;
-
 
     public void Validator(String nombre, String clave, String clave2, Long dni, String correo) throws Exception {
 
@@ -49,8 +49,8 @@ public class ServicioClientes implements UserDetailsService {
     //// CURD
     @Transactional
 
-    public Clientes save(String nombre,String clave,String clave2, Long dni, String correo) throws Exception {
-        Validator(nombre,clave,clave2, dni, correo);
+    public Clientes save(String nombre, String clave, String clave2, Long dni, String correo) throws Exception {
+        Validator(nombre, clave, clave2, dni, correo);
 
         Clientes CT = new Clientes();
         CT.setNombre(nombre);
@@ -60,6 +60,7 @@ public class ServicioClientes implements UserDetailsService {
 
         CT.setDni(dni);
         CT.setCorreo(correo);
+        CT.setRole(Role.CLIENTE);
         return repositorioClientes.save(CT);
     }
 
@@ -98,13 +99,26 @@ public class ServicioClientes implements UserDetailsService {
 
     }
 
+    @Transactional
+    public void cambiarRol(String id) throws Exception {
+        Optional<Clientes> respuesta = repositorioClientes.findById(id);
+        if (respuesta.isPresent()) {
+            Clientes cliente = respuesta.get();
+            if (cliente.getRole().equals(Role.CLIENTE)) {
+                cliente.setRole(Role.ADMIN);
+            } else if (cliente.getRole().equals(Role.ADMIN)) {
+                cliente.setRole(Role.CLIENTE);
+            }
+        }
+    }
+
     @Override
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
         Clientes cliente = repositorioClientes.buscarPorMail(correo);
         if (cliente != null) {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
-            GrantedAuthority permiso1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+            GrantedAuthority permiso1 = new SimpleGrantedAuthority("ROLE_" + cliente.getRole());
             permisos.add(permiso1);
 
             //Guarda la session de usuario. el usuario lo guarda en "usuariosession"
