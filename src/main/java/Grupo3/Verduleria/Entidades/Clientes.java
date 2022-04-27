@@ -20,21 +20,12 @@ public class Clientes {
     public Clientes() {
     }
 
-<<<<<<< HEAD
-    public Clientes(String nombre, Long dni, String correo) {
-=======
     public Clientes(String nombre, String clave, Long dni, String correo) {
->>>>>>> 2294dc084fdc33bc970866ffb77e0b4705ea7c14
         this.nombre = nombre;
         this.clave = clave;
         this.dni = dni;
         this.correo = correo;
     }
-
-   
-
-    
-    
 
     public String getId() {
         return id;
@@ -80,14 +71,4 @@ public class Clientes {
     public String toString() {
         return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", clave=" + clave + ", dni=" + dni + ", correo=" + correo + '}';
     }
-
-<<<<<<< HEAD
-=======
-
-
-    
-    
-    
-    
->>>>>>> 2294dc084fdc33bc970866ffb77e0b4705ea7c14
 }
