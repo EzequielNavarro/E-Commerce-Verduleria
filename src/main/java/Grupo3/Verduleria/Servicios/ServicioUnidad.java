@@ -14,7 +14,6 @@ public class ServicioUnidad {
     @Autowired
     private RepositorioUnidad repositorioUnidad;
 
-
     public void Validator(String nombre, Integer precio, Integer unidad) throws Exception {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new Exception("El nombre no es valido");
@@ -59,17 +58,17 @@ public class ServicioUnidad {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductoUnidad> findAll()  throws Exception {
+    public List<ProductoUnidad> findAll() throws Exception {
         return repositorioUnidad.findAll();
     }
 
-     @Transactional(readOnly = true)
-    public ProductoUnidad findById(String id)  throws Exception{
-        return  repositorioUnidad.getById(id);
-    }
-    
     @Transactional(readOnly = true)
-    public List<ProductoUnidad> buscarPorNombre(String nombre) throws Exception{
+    public ProductoUnidad findById(String id) throws Exception {
+        return repositorioUnidad.getById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProductoUnidad> buscarPorNombre(String nombre) throws Exception {
         return repositorioUnidad.buscarPorNombre(nombre);
     }
 
