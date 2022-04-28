@@ -1,7 +1,5 @@
 package Grupo3.Verduleria.configuraciones;
 
-
-
 import Grupo3.Verduleria.Servicios.ServicioClientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -12,33 +10,32 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
-    
+public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private ServicioClientes servicioClientes;
-    
+
 //	metodo que indica que en el servicio se usara metodos de seguridad(en este caso encriptado)
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(servicioClientes).passwordEncoder(new BCryptPasswordEncoder());
     }
-    
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().antMatchers("/css/*","/js/*","/img/*","/**").permitAll()
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("username")		
+                .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/inicio").permitAll()
-            .and().logout() 
-                .logoutUrl("/logout")  		
-                .logoutSuccessUrl("/?logout").permitAll()	
-            .and().csrf().disable();
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/?logout").permitAll()
+                .and().csrf().disable();
     }
 }
