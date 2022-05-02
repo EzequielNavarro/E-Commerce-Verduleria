@@ -11,6 +11,9 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script
       src="https://kit.fontawesome.com/95d9d592a6.js"
       crossorigin="anonymous"
@@ -25,7 +28,7 @@
     
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><strong> V D P </strong> </a>
+          <a class="navbar-brand" href="index.html"><strong> V D P </strong> </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -66,10 +69,17 @@
                 </ul>
               </li>
               <li class="nav-item"></li>
-              <a class="nav-link active" aria-current="page" href="Contacto.html"
+              <a class="nav-link active" aria-current="page" href="sugerencias.html"
                 >CONTACTO</a
               >
+              <li class="nav-item"></li>
+              <a class="nav-link active" aria-current="page" href="Carrito.html"
+                ><i class="fa-brands fa-shopify"></i></a>
             </ul>
+            
+
+        
+            
             <form class="d-flex">
               <input
                 class="form-control me-2"
@@ -80,9 +90,13 @@
               <button
                 class="btn btn-outline-success"
                 type="submit"
-                style="color: #f0414166"
+                style="color: #9a1c1cb8"
+                
+               }
+
+               
               >
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass"> </i>
               </button>
             </form>
           </div>
@@ -118,24 +132,23 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/FONDO VERDURA.jpg" class="d-block w-100" />
+            <img src="img/FONDO VERDURA.jpg" class="d-block w-95" />
             <div class="carousel-caption d-none d-md-block">
-              <a href="Listado_Productos.html"> REALIZA TU PEDIDO</a>
+              <a class="BotonCarru" href="Listado_Productos.html">REALIZA TU PEDIDO</a>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/aguacate.jpeg" class="d-block w-100" />
+            <img src="img/Carrusel3.jpeg" class="d-block w-95" />
             <div class="carousel-caption d-none d-md-block">
               <a href="Listado_Productos.hmtl"> REALIZA TU PEDIDO</a>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/CEBOLLA.jpg" class="d-block w-100" />
+            <img src="img/carrusel4.jpeg" class="d-block w-95" />
             <div class="carousel-caption d-none d-md-block">
-              <a href="Listado_Productos.html"> REALIZA TU PEDIDO</a>
+              <a href="Listado_Productos.hmtl"> REALIZA TU PEDIDO</a>
             </div>
           </div>
-        </div>
         <button
           class="carousel-control-prev"
           type="button"
@@ -156,29 +169,30 @@
         </button>
       </div>
     </header>
+        
+        
+       
+    <div class="footer-basic">
+      <footer>
+          <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+          <ul class="list-inline">
+              <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+              <li class="list-inline-item"><a href="Listado_Productos.html">Productos</a></li>
+              <li class="list-inline-item"><a href="#">Nosotros</a></li>
+              <li class="list-inline-item"><a href="sugerencias.html">Contacto</a></li>
+              <li class="list-inline-item"><a href="#">Términos</a></li>
+          </ul>
+          <p class="copyright">Verdulería del pueblo  © since 1998</p>
+      </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    <footer id="footer-area">
-      <!--Font type igual que navbar (aria)-->
-      <li>Productos</li>
-      <a href="Lista-Productos.html">Lista de Productos</a>
-      <a href="Carrito.html">Mi carrito</a>
-      <li>Cliente</li>
-      <a href="Login.html">Conectarse</a>
-      <!-- colocar if en caso de que ya este conectado--->
-      <a href="User.html">Mis datos</a>
-      <li>Nosotros</li>
-      <!-- Enlaces de los mails de el equipo -->
-
-      <div>
-        <p>--Copyrigth--</p>
-        <!--Copyrigth-->
-      </div>
-    </footer>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+        <!-- JS -->
+        <script src="js/envioSugerencias.js"></script>
+        
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
+    </body>
+    </html>
