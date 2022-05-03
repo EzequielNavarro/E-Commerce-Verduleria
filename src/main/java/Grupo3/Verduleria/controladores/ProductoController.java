@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/productoslista")
+@RequestMapping("/")
 public class ProductoController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ProductoController {
     public String listaProductos(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo);
-        return "Lista_Productos.html";
+        return "Listado_Productos.html";
     }
 
     
@@ -32,7 +32,7 @@ public class ProductoController {
     public String listaProductosCliente(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo);
-        return "productos_cliente";
+        return "productos_cliente.html";
     }
 
     @PostMapping("/addproducto")
@@ -41,10 +41,10 @@ public class ProductoController {
             servicioKilo.save(nombre, precio, kilo);
         } catch (Exception ex) {
             model.addAttribute("error", ex.getMessage());
-            return "Lista_Productos.html";
+            return "Listado_Productos.html";
         }
 
-        return "Lista_Productos.html";
+        return "Listado_Productos.html";
     }
 
     @PostMapping("/delproducto")
@@ -54,7 +54,7 @@ public class ProductoController {
         } catch (Exception ex) {
             model.addAttribute("error", "Hubo un problema: " + ex.getMessage());
         }
-        return "Lista_Productos.html";
+        return "Listado_Productos.html";
     }
 
 }

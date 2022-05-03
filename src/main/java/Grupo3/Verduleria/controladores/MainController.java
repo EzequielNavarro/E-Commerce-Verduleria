@@ -37,7 +37,7 @@ public class MainController {
 
     @GetMapping("/registro")
     public String registro() {
-        return "formulario.html";
+        return "Registro.html";
     }
 
     @PostMapping("/registrar")
