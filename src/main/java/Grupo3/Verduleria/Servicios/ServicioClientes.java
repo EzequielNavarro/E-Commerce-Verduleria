@@ -65,13 +65,16 @@ public class ServicioClientes implements UserDetailsService {
     }
 
     @Transactional
-    public Clientes edit(String id, String clave, String nombre, Long dni, String correo) throws Exception {
+    public Clientes edit(String id, String clave, String clave2, String nombre, Long dni, String correo) throws Exception {
+        this.Validator(nombre, clave, clave2, dni, correo);
         Optional<Clientes> respuesta = repositorioClientes.findById(id);
         if (respuesta.isPresent()) {
             Clientes CT = respuesta.get();
             CT.setNombre(nombre);
             CT.setDni(dni);
             CT.setCorreo(correo);
+            String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
+            CT.setClave(claveEncriptada);
             return repositorioClientes.save(CT);
         } else {
             return null;
