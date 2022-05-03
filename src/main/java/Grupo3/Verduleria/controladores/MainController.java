@@ -17,29 +17,29 @@ public class MainController {
     private ServicioClientes servicioClientes;
 
     @GetMapping("/")
-    public String index(@RequestParam (required = false) String login, ModelMap model) {
+    public String index(@RequestParam(required = false) String login, ModelMap model) {
         if (login != null) {
             model.put("exito", "Logueado con exito");
         }
         return "index.html";
     }
 
-//    @GetMapping("/login")
-//    public String login(@RequestParam (required = false) String error, @RequestParam (required = false) String logout, ModelMap model) {
-//    if (error != null) {
-//    model.put("error", "Usuario o Contraseña incorrectos");
-//}
-//    if (logout != null) {
-//    model.put("logout","Desconectado correctamente");
-//}
-//        return "login.html";
-//    }
-    
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
+        if (error != null) {
+            model.put("error", "Usuario o Contraseña incorrectos");
+        }
+        if (logout != null) {
+            model.put("logout", "Desconectado correctamente");
+        }
+        return "login.html";
+    }
+
     @GetMapping("/registro")
     public String registro() {
-        return "formulario.html";
+        return "Registro.html";
     }
-    
+
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String clave, @RequestParam String clave2, @RequestParam Long dni, @RequestParam String correo) {
 
@@ -54,7 +54,13 @@ public class MainController {
             modelo.put("correo", correo);
             return null;
         }
-        modelo.put("exito","Se ha registrado en nuestro sistema correctamente");
-        return "inicio.html";
+        modelo.put("exito", "Se ha registrado en nuestro sistema correctamente");
+        modelo.put("ingrese", "Ahora puede ingresar");
+        return "login.html";
+    }
+
+    @GetMapping("/contacto")
+    public String contacto() {
+        return "contacto.html";
     }
 }

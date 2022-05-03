@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Metaetiquetas -->
+        <meta name="description" content="Somos una empresa de venta de productos agrícolas, frutas, verduras, el mejor precio y calidad">
+        <meta name="keywords" content=""><!-- Falta completar todo lo q contiene la pag desde productos hasta ubicación -->
+        <!-- Protocolo open graph -->
+        <meta property="og: title" content="VDP Verduleria del pueblo">
+        <meta property="og: image" content="img/LOGO TITULO.png">
+        <meta property="og: description" content="Somos una empresa de venta de productos agrícolas, frutas, verduras, el mejor precio y calidad">
+        <meta property="og: author" content="VDP Verduleria del pueblo">
+        <!-- CSS -->
+        <link rel="stylesheet" href="estilos/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- Fontawesome -->
+        <script src="https://kit.fontawesome.com/95d9d592a6.js" crossorigin="anonymous"></script>
+        <!-- Jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <title>Document</title>
+    </head>
+    <body  style="background-color: #e8e7e2e2; ">
+        <header>
+            <div class="imglogo"><img src="img/LOGO TITULO.png" > </div>
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html"><strong>  V D P </strong> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/inicio">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/productos-cliente">PRODUCTOS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Mi cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Desconectar</a>
+                            </li>
+                            <li class="nav-item"></li>
+                            <a class="nav-link active" aria-current="page" href="/contacto-cliente"
+                               >CONTACTO</a
+                            >
+                            <li class="nav-item"></li>
+                            <a class="nav-link active" aria-current="page" href="#"
+                               ><i class="fa-brands fa-shopify"></i></a>
+                        </ul>
+
+
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
+                            <button class="btn btn-outline-success" type="submit" style="color: #f0414166;">  <i class="fa-solid fa-magnifying-glass"></i></button>
+
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Sección con formulario de contacto-Bootstrap -->
+
+
+
+            <div class="container">
+                <br>
+
+                <p>Envianos tu consulta por medio de nuestro formulario de contacto. Te responderemos a la brevedad.
+                    <br>
+                    <br>
+                </p>
+                <form >
+                    <div class="mb-3 ">  
+                        <label for="mail" class="form-label">Email</label>
+                        <input type="email"  name="mail" class="form-control" id="mail" placeholder="name@example.com" required>
+                    </div>
+
+                    <button class="boton-validar" type="button" value="Validar Correo" onclick="validarCorreo(form.mail.value)">Validar correo</button>
+
+                    <div class="mb-3 ">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea name="mensaje" class="form-control" id="mensaje" rows="3" required></textarea>
+                    </div>
+
+                    <button class="boton-enviar" type="submit">Enviar</button>
+
+                </form>  
+                <div id="res"></div> 
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+            <div class="footer-basic">
+                <footer>
+                    <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+                        <li class="list-inline-item"><a href="Listado_Productos.html">Productos</a></li>
+                        <li class="list-inline-item"><a href="#">Nosotros</a></li>
+                        <li class="list-inline-item"><a href="contacto.html">Contacto</a></li>
+                        <li class="list-inline-item"><a href="#">Términos</a></li>
+                    </ul>
+                    <p class="copyright">Verdulería del pueblo  © since 1998</p>
+                </footer>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+    <!-- JS -->
+    <script src="js/envioSugerencias.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
+</body>
+</html>
