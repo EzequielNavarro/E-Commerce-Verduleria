@@ -68,4 +68,8 @@ public class ClienteController {
         }
 
     }
+    @GetMapping("/contacto-cliente")
+    public String contactoCliente(){
+        return "contacto_cliente.html";
+    }
 }

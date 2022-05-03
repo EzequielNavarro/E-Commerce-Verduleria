@@ -4,6 +4,7 @@ import Grupo3.Verduleria.Entidades.ProductoKilo;
 import Grupo3.Verduleria.Servicios.ServicioKilo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,21 @@ public class ProductoController {
 
     @Autowired
     private ServicioKilo servicioKilo;
-    
-    
+
     @GetMapping("/productoslista")
     public String listaProductos(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo);
         return "Lista_Productos.html";
+    }
+
+    
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")  
+    @GetMapping("/productos-cliente")
+    public String listaProductosCliente(ModelMap model) throws Exception {
+        List<ProductoKilo> listaKilo = servicioKilo.findAll();
+        model.addAttribute("lista", listaKilo);
+        return "productos_cliente";
     }
 
     @PostMapping("/addproducto")

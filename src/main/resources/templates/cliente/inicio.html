@@ -43,37 +43,26 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/"
+                <a class="nav-link active" aria-current="page" href="/inicio"
                   >INICIO</a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/productoslista">PRODUCTOS</a>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  INGRESO AL SISTEMA
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="INGRESO AL SISTEMA">
-                  <li><a class="dropdown-item" href="/login">Ya soy usuario</a></li>
-                  <li>
-                    <a class="dropdown-item" href="/registro">Quiero registrarme</a>
-                  </li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Mi cuenta</a>
               </li>
+               <li class="nav-item">
+                <a class="nav-link" href="/logout">Desconectar</a>
+              </li>
+              
               <li class="nav-item"></li>
               <a class="nav-link active" aria-current="page" href="/contacto"
                 >CONTACTO</a
               >
               <li class="nav-item"></li>
-              <a class="nav-link active" aria-current="page" href="/carrito"
+              <a class="nav-link active" aria-current="page" href="#"
                 ><i class="fa-brands fa-shopify"></i></a>
             </ul>
             
@@ -169,7 +158,7 @@
         </button>
       </div>
     </header>
-    <h4 th:if="${logout != null}" th:text="${logout}" style="color: red"></h4>
+  
         
        
     <div class="footer-basic">
