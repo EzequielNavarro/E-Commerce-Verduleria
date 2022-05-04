@@ -161,8 +161,9 @@
       <footer>
          
           <ul class="list-inline">
-              <li class="list-inline-item"><a href="/">Inicio</a></li>
-              <li class="list-inline-item"><a href="/productos-cliente">Productos</a></li>
+                            <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+              <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+              <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
               <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
               <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
               <li class="list-inline-item"><a href="#">Términos</a></li>

@@ -136,8 +136,8 @@
       <footer>
          
           <ul class="list-inline">
-            <li th:if="usuariosession == null" class="list-inline-item"><a href="/">Inicio</a></li>
-          <li th:if="usuariosession != null" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+              <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+              <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
               <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
               <li class="list-inline-item"><a href="#">Nosotros</a></li>
               <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
