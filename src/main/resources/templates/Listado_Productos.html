@@ -50,7 +50,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/productoslista">PRODUCTOS</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" >
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -97,6 +97,30 @@
       </div>
     </nav>
 
+      
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Inventario</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acción</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="producto:${lista}">
+        <td th:text="${producto.id}"></td>
+        <td th:text="${producto.nombre}"></td>
+        <td th:text="${producto.precio}"></td>
+        <td th:text="${producto.kilo}"></td>
+        <td><a  class="btn btn-warning" th:href="@{carrito/comprar/{id} (id=${producto.id}) }">Agregar al Carrito</a> </td>
+       <!--  <td><a  class="btn btn-danger" th:href="@{lista/delete/{id} (id=${producto.id}) }">Eliminar</a> </td> -->
+      </tr>       
+    </tbody>
+  </table>
+
     <div class="galeria">
       <h1>NUESTROS PRODUCTOS</h1>
      <br>
@@ -104,7 +128,7 @@
           <div class="imagen">
               <img src= "img/cherry.jpeg" alt="" >
               <div class="overlay" >
-                <a href="Carrito.html"> <h2>COMPRA AHORA</h2></a>  
+                <a href="/carrito"> <h2>COMPRA AHORA</h2></a>  
               </div>
           </div>
           <div class="imagen">

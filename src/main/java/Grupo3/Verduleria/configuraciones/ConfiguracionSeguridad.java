@@ -28,7 +28,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
                 .and().formLogin()
-                .loginPage("/login")
+                .loginPage("/login") // aca index
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("username")
                 .passwordParameter("password")

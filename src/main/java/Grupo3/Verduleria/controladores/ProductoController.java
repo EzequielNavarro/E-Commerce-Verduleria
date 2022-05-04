@@ -2,6 +2,7 @@ package Grupo3.Verduleria.controladores;
 
 import Grupo3.Verduleria.Entidades.ProductoKilo;
 import Grupo3.Verduleria.Servicios.ServicioKilo;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,15 +20,16 @@ public class ProductoController {
     @Autowired
     private ServicioKilo servicioKilo;
 
+    List<ProductoKilo> lista_producto = new ArrayList<ProductoKilo>();
+
     @GetMapping("/productoslista")
     public String listaProductos(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
-        model.addAttribute("lista", listaKilo);
+        model.addAttribute("lista", listaKilo); // muestra la lista
         return "Listado_Productos.html";
     }
 
-    
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")  
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/productos-cliente")
     public String listaProductosCliente(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();

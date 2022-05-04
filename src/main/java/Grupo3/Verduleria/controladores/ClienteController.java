@@ -58,7 +58,7 @@ public class ClienteController {
             }
 
             cliente = servicioClientes.findById(id);
-            servicioClientes.edit(id, clave1, nombre, dni, correo);
+            servicioClientes.edit(id, clave1, clave2, nombre, dni, correo);
             session.setAttribute("usuariosession", cliente); //esto actualiza los cambios del perfil del cliente actual a toda la pagina/session
             return "redirect:/inicio";
         } catch (Exception ex) {
