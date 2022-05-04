@@ -20,11 +20,6 @@ public class ClienteController {
     @Autowired
     private ServicioClientes servicioClientes;
 
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
-    @GetMapping("/inicio")
-    public String inicio() {
-        return "inicio.html";
-    }
 
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/editar-perfil")

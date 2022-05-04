@@ -19,7 +19,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html"><strong>  V D P </strong> </a>
+                    <a class="navbar-brand" href="/"><strong>  V D P </strong> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -61,18 +61,18 @@
 
             <!--Ingresar si soy usuario solo necesita mail y contraseña y el boton d ingresar-->
             <div class="signupFrm">
-                <form action="" class="form">
+                <form action="/logincheck" class="form" method="POST">
                     <h6 th:if="${exito != null}" th:text="${exito}" style="color: greenyellow"></h6>  
                     <h6 th:if="${ingrese != null}" th:text="${ingrese}" style="color: green"></h6>
 
                     <h5 class="title">Iniciar Sesión</h5>
                     <h6 th:if="${error != null}" th:text="${error}" style="color: red"></h6>
                     <div class="inputContainer">
-                        <input type="text" class="input" placeholder="Ingrese email" required>  
+                        <input type="text" name="username" class="input" placeholder="Ingrese email" required>  
                         <label for="" class="label">Email</label>
                     </div>
                     <div class="inputContainer">
-                        <input type="text" class="input" placeholder="Ingrese contraseña"required>
+                        <input type="text" name="password" class="input" placeholder="Ingrese contraseña"required>
                         <label for="" class="label">Contraseña</label>
                     </div>
 
@@ -84,10 +84,10 @@
                 <footer>
                     <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-                        <li class="list-inline-item"><a href="Listado_Productos.html">Productos</a></li>
+                        <li class="list-inline-item"><a href="/">Inicio</a></li>
+                        <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
                         <li class="list-inline-item"><a href="#">Nosotros</a></li>
-                        <li class="list-inline-item"><a href="contacto.html">Contacto</a></li>
+                        <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
                         <li class="list-inline-item"><a href="#">Términos</a></li>
                     </ul>
                     <p class="copyright">Verdulería del pueblo  © since 1998</p>

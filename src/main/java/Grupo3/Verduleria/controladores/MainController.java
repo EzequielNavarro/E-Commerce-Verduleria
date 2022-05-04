@@ -2,6 +2,7 @@ package Grupo3.Verduleria.controladores;
 
 import Grupo3.Verduleria.Servicios.ServicioClientes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,20 +18,23 @@ public class MainController {
     private ServicioClientes servicioClientes;
 
     @GetMapping("/")
-    public String index(@RequestParam(required = false) String login, ModelMap model) {
-        if (login != null) {
-            model.put("exito", "Logueado con exito");
+    public String index(@RequestParam(required = false) String logout, ModelMap model) {
+        if (logout != null) {
+            model.put("logout", "Desconectado correctamente");
         }
         return "index.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
+    @GetMapping("/inicio")
+    public String inicio() {
+        return "cliente/inicio.html";
+    }
+
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
+    public String login(@RequestParam(required = false) String error, ModelMap model) {
         if (error != null) {
             model.put("error", "Usuario o Contraseña incorrectos");
-        }
-        if (logout != null) {
-            model.put("logout", "Desconectado correctamente");
         }
         return "login.html";
     }
@@ -52,7 +56,7 @@ public class MainController {
 //          modelo.put("clave2", clave2);
             modelo.put("dni", dni);
             modelo.put("correo", correo);
-            return null;
+            return "Registro.html";
         }
         modelo.put("exito", "Se ha registrado en nuestro sistema correctamente");
         modelo.put("ingrese", "Ahora puede ingresar");
