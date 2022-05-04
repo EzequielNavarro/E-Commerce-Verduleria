@@ -17,7 +17,7 @@
       src="https://kit.fontawesome.com/95d9d592a6.js"
       crossorigin="anonymous"
     ></script>
-    <title>V D P</title>
+    <title>CARRITO</title>
   </head>
   <body style="background-color: #e8e7e2e2">
 
@@ -27,7 +27,7 @@
     
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/"><strong> V D P </strong> </a>
+          <a class="navbar-brand" href="index.html"><strong> V D P </strong> </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -42,12 +42,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/"
+                <a class="nav-link active" aria-current="page" href="index.html"
                   >INICIO</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/productoslista">PRODUCTOS</a>
+                <a class="nav-link" href="Listado_Productos.html">PRODUCTOS</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -68,10 +68,10 @@
                 </ul>
               </li>
               <li class="nav-item"></li>
-              <a class="nav-link active" aria-current="page" href="/contacto"
+              <a class="nav-link active" aria-current="page" href="sugerencias.html"
                 >CONTACTO</a >
                 <li class="nav-item"></li>
-                <a class="nav-link active" aria-current="page" href="/carrito"
+                <a class="nav-link active" aria-current="page" href="Carrito.html"
                   ><i class="fa-brands fa-shopify"></i></a>
               </ul>
 
@@ -103,27 +103,24 @@
         
         
        
-        <div class="footer-basic">
-          <footer>
-              <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-              <ul class="list-inline">
-                  <li th:if="${usuariosession == null}"  class="list-inline-item"><a href="/">Index</a></li>
-                  <li th:if="${usuariosession != null}"  class="list-inline-item"><a th:href="@{/inicio}">Inicio</a></li>
-                  <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
-                  <li class="list-inline-item"><a href="#">Nosotros</a></li>
-                  <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                  <li class="list-inline-item"><a href="#">Términos</a></li>
-              </ul>
-              <p class="copyright">Verdulería del pueblo  © since 1998</p>
-          </footer>
-      </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    </body>
-    
-        <script src="js/envioSugerencias.js"></script>
-        
-        <!-- Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
-    </body>
-    </html>
+        <!--INICIO FOOTER-->
+    <div class="footer-basic">
+      <footer>
+         
+          <ul class="list-inline">
+              <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+              <li class="list-inline-item"><a href="Listado_Productos.html">Productos</a></li>
+              <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
+              <li class="list-inline-item"><a href="sugerencias.html">Contacto</a></li>
+              <li class="list-inline-item"><a href="#">Términos</a></li>
+          </ul>
+          <p class="copyright">Verdulería del pueblo  © since 1998</p>
+      </footer>
+      <!--FINALIZA FOOTER-->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
+  <script src="js/envioSugerencias.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
