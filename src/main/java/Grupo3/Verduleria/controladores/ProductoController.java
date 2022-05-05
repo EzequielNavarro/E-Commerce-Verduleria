@@ -25,18 +25,12 @@ public class ProductoController {
     List<ProductoKilo> lista_producto = new ArrayList<ProductoKilo>();
 
     @GetMapping
-<<<<<<< HEAD
-    public String listaProductos(ModelMap model) throws Exception {
-=======
     public String listaProductos(ModelMap model, HttpSession session) throws Exception {
->>>>>>> a77746ac76bc051a17372d4c55d6aae2c741d160
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
 
         return "Listado_Productos.html";
     }
-
-
 
     @PostMapping("/addproducto")
     public String agregar(ModelMap model, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
