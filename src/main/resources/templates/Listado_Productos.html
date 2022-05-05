@@ -64,6 +64,9 @@
                         <li th:if="${session.usuariosession != null}" class="nav-item">
                             <a class="nav-link active" aria-current="page" th:href="@{/logout}">DESCONECTAR</a>
                         </li>
+                                 <!-- con hasRole muestra solo el contenido segun el Rol -->
+                        <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administrador</a> </li></div>
                         
                         <li class="nav-item"></li>
                         <a class="nav-link active" aria-current="page" href="/contacto"
@@ -136,7 +139,7 @@
    </div>
    <!--FINALIZA GALERIA-->
 
-  <h2>Cargar Productos</h2>
+  <h2>Listado de Productos</h2>
   <table class="table">
     <thead>
       <tr>
