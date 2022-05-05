@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/productoslista")
 public class ProductoController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class ProductoController {
 
     List<ProductoKilo> lista_producto = new ArrayList<ProductoKilo>();
 
-    @GetMapping("/productoslista")
+    @GetMapping
     public String listaProductos(ModelMap model) throws Exception {
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
@@ -59,4 +59,13 @@ public class ProductoController {
         return "Listado_Productos.html";
     }
 
+    @PostMapping("/modproducto")
+    public String modificar(ModelMap model, @RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
+        try {
+            servicioKilo.edit(id, nombre, precio, kilo);
+        } catch(Exception ex){
+            model.addAttribute("error", ex.getMessage());
+        }
+        return "Listado_Productos.html";
+    }
 }

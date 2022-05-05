@@ -63,72 +63,79 @@
             </div>
         </nav>
         <!--FINALIZA NAV-->
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+        <h2>Crear Producto</h2>
+        <form class="form-horizontal" th:action="@{/productos/save}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nombre" name="nombre"
+                           placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+                </div>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="img/FONDO VERDURA.jpg" class="d-block w-95" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <a class="BotonCarru" href="/productoslista">REALIZA TU PEDIDO</a>
-                    </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="descripcion">Descripción:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="descripcion" name="descripcion"
+                              placeholder="Ingrese la descripcion del producto" required
+                              autocomplete="off"> </textarea>
                 </div>
-                <div class="carousel-item">
-                    <img src="img/Carrusel3.jpeg" class="d-block w-95" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <a href="/productoslista"> REALIZA TU PEDIDO</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/carrusel4.jpeg" class="d-block w-95" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <a href="/productoslista"> REALIZA TU PEDIDO</a>
-                    </div>
-                </div>
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev"
-                    >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next"
-                    >
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
 
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="cantidad"
+                           name="cantidad" placeholder="Ingrese la cantidad del producto"
+                           required autocomplete="off">
+                </div>
+            </div>
 
-        <!--INICIO FOOTER-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="precio">Precio:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" step="any" id="precio" name="precio"
+                           placeholder="Ingrese el precio del producto" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="img">Imagen:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file" id="img" name="img">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-saved"></span> Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    <!--INICIO FOOTER-->
     <div class="footer-basic">
-      <footer>
-         
-          <ul class="list-inline">
-              <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
-              <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
-              <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
-              <li class="list-inline-item"><a href="#">Nosotros</a></li>
-              <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-              <li class="list-inline-item"><a href="#">Términos</a></li>
-          </ul>
-          <p class="copyright">Verdulería del pueblo  © since 1998</p>
-      </footer>
-      <!--FINALIZA FOOTER-->
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
-  <script src="js/envioSugerencias.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-  </body>
+        <footer>
+
+            <ul class="list-inline">
+                <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+                <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+                <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
+                <li class="list-inline-item"><a href="#">Nosotros</a></li>
+                <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
+                <li class="list-inline-item"><a href="#">Términos</a></li>
+            </ul>
+            <p class="copyright">Verdulería del pueblo  © since 1998</p>
+        </footer>
+        <!--FINALIZA FOOTER-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
+    <script src="js/envioSugerencias.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>
