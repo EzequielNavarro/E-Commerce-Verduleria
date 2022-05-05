@@ -34,13 +34,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a th:if = "${ usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">INICIO</a>
-                             <a th:if = "${ usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
+                            <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">INICIO</a>
+                             <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/productoslista">PRODUCTOS</a>
                         </li>
-                        <li th:if =  "${ usuariosession == null}" class="nav-item dropdown">
+                        <li th:if="${session.usuariosession == null}" class="nav-item dropdown">
                             <a
                                 class="nav-link dropdown-toggle"
                                 href="#"
@@ -57,6 +57,12 @@
                                     <a class="dropdown-item" href="/registro">Quiero registrarme</a>
                                 </li>
                             </ul>
+                        </li>
+                          <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}">Mi cuenta</a>
+                        </li>
+                        <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/logout}">DESCONECTAR</a>
                         </li>
                         
                         <li class="nav-item"></li>
@@ -157,8 +163,8 @@
       <footer>
          
           <ul class="list-inline">
-              <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
-              <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+              <li th:if="${session.usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+              <li th:if="${session.usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
               <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
               <li class="list-inline-item"><a href="#">Nosotros</a></li>
               <li class="list-inline-item"><a href="/contacto">Contacto</a></li>

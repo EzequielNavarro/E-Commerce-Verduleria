@@ -33,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a th:if = "${ usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}" >INICIO</a>
-                             <a th:if = "${ usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
+                            <a th:if="${ usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}" >INICIO</a>
+                             <a th:if="${ usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/productoslista">PRODUCTOS</a>
                         </li>
-                        <li th:if =  "${ usuariosession == null}" class="nav-item dropdown">
+                        <li th:if="${usuariosession == null}" class="nav-item dropdown">
                             <a
                                 class="nav-link dropdown-toggle"
                                 href="#"
@@ -87,16 +87,18 @@
 <!--Ingresar si soy usuario solo necesita mail y contraseña y el boton d ingresar-->
         <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>
         <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: greenyellow"></p>
+        <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+        <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>
        <div class="signupFrm">
-        <form action="" class="form">
+        <form action="/logincheck" class="form" method="POST">
           <h5 class="title">Iniciar Sesión</h5>
     
           <div class="inputContainer">
-            <input type="text" class="input" placeholder="Ingrese email" required>  
+            <input type="text" name="username" class="input" placeholder="Ingrese email" required>  
             <label for="" class="label">Email</label>
           </div>
           <div class="inputContainer">
-            <input type="text" class="input" placeholder="Ingrese contraseña"required>
+            <input type="text" name="password" class="input" placeholder="Ingrese contraseña"required>
             <label for="" class="label">Contraseña</label>
           </div>
     
@@ -109,8 +111,8 @@
       <footer>
          
           <ul class="list-inline">
-              <li th:if="${usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
-              <li th:if="${usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+              <li th:if="${session.usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+              <li th:if="${session.usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
               <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
               <li class="list-inline-item"><a href="#">Nosotros</a></li>
               <li class="list-inline-item"><a href="/contacto">Contacto</a></li>

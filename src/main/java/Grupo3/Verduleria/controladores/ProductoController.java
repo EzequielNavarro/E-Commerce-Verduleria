@@ -1,9 +1,11 @@
 package Grupo3.Verduleria.controladores;
 
+import Grupo3.Verduleria.Entidades.Clientes;
 import Grupo3.Verduleria.Entidades.ProductoKilo;
 import Grupo3.Verduleria.Servicios.ServicioKilo;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -23,19 +25,18 @@ public class ProductoController {
     List<ProductoKilo> lista_producto = new ArrayList<ProductoKilo>();
 
     @GetMapping
+<<<<<<< HEAD
     public String listaProductos(ModelMap model) throws Exception {
+=======
+    public String listaProductos(ModelMap model, HttpSession session) throws Exception {
+>>>>>>> a77746ac76bc051a17372d4c55d6aae2c741d160
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
+
         return "Listado_Productos.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
-    @GetMapping("/productos-cliente")
-    public String listaProductosCliente(ModelMap model) throws Exception {
-        List<ProductoKilo> listaKilo = servicioKilo.findAll();
-        model.addAttribute("lista", listaKilo);
-        return "productos_cliente.html";
-    }
+
 
     @PostMapping("/addproducto")
     public String agregar(ModelMap model, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
