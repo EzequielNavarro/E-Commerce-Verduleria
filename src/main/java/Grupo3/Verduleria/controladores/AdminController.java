@@ -20,13 +20,13 @@ public class AdminController {
     @Autowired
     private ServicioClientes ServicioClientes;
 
-    @GetMapping("/")
+    @GetMapping
     public String dashboard(ModelMap model) {
-        try {
-            model.put("usuarios", ServicioClientes.findAll());
-        } catch (Exception e) {
-        }
-        return "admin-dashboard";
+//        try {
+//            model.put("usuarios", ServicioClientes.findAll());
+//        } catch (Exception e) {
+//        }
+        return "/Admin";
     }
 
     @GetMapping("/role/{id}")

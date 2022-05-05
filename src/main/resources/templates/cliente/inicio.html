@@ -44,9 +44,9 @@
                         <li class="nav-item">                         
                             <a class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
                         </li>
-               <!--     <li th:if="${usuariosession == null}" class="nav-item">
-                           <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
-                             </li>-->
+                        <!--     <li th:if="${usuariosession == null}" class="nav-item">
+                                    <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                                      </li>-->
                         <li th:if="${session.usuariosession != null}" class="nav-item">
                             <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
                         </li>
@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/logout">DESCONECTAR</a>
                         </li>
+                        <!-- con hasRole muestra solo el contenido segun el Rol -->
+                        <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administradorrrr</a> </li></div>
                         <li class="nav-item"></li>
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a

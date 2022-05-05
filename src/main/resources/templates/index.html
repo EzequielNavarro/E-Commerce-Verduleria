@@ -48,6 +48,9 @@
                                 <li><a class="dropdown-item" href="/registro">Quiero registrarme</a></li>
                             </ul>
                         </li>
+                                 <!-- con hasRole muestra solo el contenido segun el Rol -->
+                        <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administrador</a> </li></div>
                         <li class="nav-item"></li>
                         <a class="nav-link active" aria-current="page" href="/contacto">CONTACTO</a>
                         <li class="nav-item"></li>
