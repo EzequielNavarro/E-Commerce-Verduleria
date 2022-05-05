@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
 @Controller
-@RequestMapping("/")
+@RequestMapping("/usuario")
 public class ClienteController {
 
     @Autowired
     private ServicioClientes servicioClientes;
-
 
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/editar-perfil")
@@ -38,12 +37,12 @@ public class ClienteController {
             model.addAttribute("error", ex.getMessage());
 
         }
-        return "perfil.html";
+        return "cliente/perfil.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
     @PostMapping("/actualizar-perfil")
-    public String actualizarPerfil(ModelMap model, HttpSession session, @RequestParam String id, @RequestParam String nombre, @RequestParam Long dni, @RequestParam String correo, @RequestParam String clave1, @RequestParam String clave2) {
+    public String actualizarPerfil(ModelMap model, HttpSession session, @RequestParam String id, @RequestParam String nombre, @RequestParam Long dni, @RequestParam String correo, @RequestParam(required = false) String clave, @RequestParam(required = false) String clave2) {
         Clientes cliente = null;
 
         try {
@@ -53,14 +52,15 @@ public class ClienteController {
             }
 
             cliente = servicioClientes.findById(id);
-            servicioClientes.edit(id, clave1, clave2, nombre, dni, correo);
-            session.setAttribute("usuariosession", cliente); //esto actualiza los cambios del perfil del cliente actual a toda la pagina/session
-            return "redirect:/inicio";
+            servicioClientes.edit(id, clave, clave2, nombre, dni, correo);
+            session.setAttribute("usuariosession", cliente); //esto actualiza los cambios del perfil del cliente actual a toda la pagina/session  
         } catch (Exception ex) {
             model.put("error", ex.getMessage());
             model.put("perfil", cliente);
-            return "perfil.html";
+            return "cliente/perfil.html";
         }
+        model.put("exitop", "Perfil actualizado correctamente");
+        return "cliente/inicio.html";
 
     }
 }
