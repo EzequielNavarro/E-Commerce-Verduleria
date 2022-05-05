@@ -32,8 +32,6 @@ public class ProductoController {
         return "Listado_Productos.html";
     }
 
-
-
     @PostMapping("/addproducto")
     public String agregar(ModelMap model, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
         try {
@@ -56,4 +54,13 @@ public class ProductoController {
         return "Listado_Productos.html";
     }
 
+    @PostMapping("/modproducto")
+    public String modificar(ModelMap model, @RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
+        try {
+            servicioKilo.edit(id, nombre, precio, kilo);
+        } catch(Exception ex){
+            model.addAttribute("error", ex.getMessage());
+        }
+        return "Listado_Productos.html";
+    }
 }

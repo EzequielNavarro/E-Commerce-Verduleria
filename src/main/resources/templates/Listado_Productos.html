@@ -136,7 +136,28 @@
    </div>
    <!--FINALIZA GALERIA-->
 
-     <!--INICIO FOOTER-->
+  <h2>Cargar Productos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Acción</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="producto:${lista}">
+        <td th:text="${producto.nombre}"></td>
+        <td th:text="${producto.precio}"></td>
+        <td th:text="${producto.kilo}"></td>
+        <td><a  class="btn btn-warning" th:href="@{productoslista/modproducto/{id} (id=${producto.id}) }">Editar</a> </td>
+        <td><a  class="btn btn-danger" th:href="@{productoslista/delproducto/{id} (id=${producto.id}) }">Eliminar</a> </td>
+      </tr>       
+    </tbody>
+  </table>
+
      <!--INICIO FOOTER-->
     <div class="footer-basic">
       <footer>
