@@ -18,10 +18,8 @@ public class MainController {
     private ServicioClientes servicioClientes;
 
     @GetMapping("/")
-    public String index(@RequestParam(required = false) String logout, ModelMap model) {
-        if (logout != null) {
-            model.put("logout", "Desconectado correctamente");
-        }
+    public String index() {
+ 
         return "index.html";
     }
 
@@ -32,9 +30,12 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap model) {
+    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout ,ModelMap model) {
         if (error != null) {
             model.put("error", "Usuario o Contraseña incorrectos");
+        }
+         if (logout != null) {
+            model.put("logout", "Desconectado correctamente");
         }
         return "login.html";
     }
