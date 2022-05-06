@@ -1,6 +1,7 @@
 package Grupo3.Verduleria.Repositorios;
 
 import Grupo3.Verduleria.Entidades.Clientes;
+import Grupo3.Verduleria.Entidades.Compra;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,11 +9,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface RepositorioClientes  extends JpaRepository<Clientes, String> {
+public interface RepositorioCompra extends JpaRepository <Compra, String> {
+
     
-    @Query("SELECT c FROM Clientes c WHERE dni = :dni")
-    public Clientes buscarPorDNI(@Param("dni")Long dni);
-    
-    @Query("SELECT c FROM Clientes c WHERE correo = :correo")
-    public Clientes buscarPorMail(@Param("correo")String correo);
+    @Query ("SELECT C FROM Compra C WHERE cliente= : cliente")
+    public Compra buscarPorCliente(@Param("cliente") Clientes cliente);
 }

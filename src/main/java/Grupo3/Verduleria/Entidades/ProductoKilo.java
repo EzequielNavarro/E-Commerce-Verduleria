@@ -61,6 +61,5 @@ public class ProductoKilo {
     public String toString() {
         return "productoKilo{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", kilo=" + kilo + '}';
     }
-    
-    
+
 }
