@@ -44,21 +44,26 @@
                         <li class="nav-item">                         
                             <a class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
                         </li>
-                        <!--     <li th:if="${usuariosession == null}" class="nav-item">
-                                    <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
-                                      </li>-->
-                        <li th:if="${session.usuariosession != null}" class="nav-item">
-                            <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                                <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
+                                 <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}" style="color: seagreen">PRODUCTOS</a>
                         </li>
+                        <li th:if="${session.usuariosession == null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                        </li> 
+                        
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" style="color: cornflowerblue">Mi cuenta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/logout" style="color: red">DESCONECTAR</a>
                         </li>
+                        
                         <!-- con hasRole muestra solo el contenido segun el Rol -->
                         <div sec:authorize="hasRole('ROLE_ADMIN')">
-                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administradorrrr</a> </li></div>
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administradorrrr</a> </li>
+                        </div>
+                        
                         <li class="nav-item"></li>
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
@@ -86,9 +91,11 @@
             </div>
         </nav>
         <!--FINALIZA NAV-->
-        <!-- MENSAJE DE EXITO EDITAR PERFIL-->
+        
+        <!-- MENSAJE DE EXITO EDITAR PERFIL -->
         <h6 th:if="${exitop != null}" th:text="${exitop}" style="color: green" align="center"></h6>
-        <!-- MENSAJE DE EXITO EDITAR PERFIL-->
+        <!-- MENSAJE DE EXITO EDITAR PERFIL -->
+        
         <div
             id="carouselExampleCaptions"
             class="carousel slide"

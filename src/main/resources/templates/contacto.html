@@ -46,9 +46,13 @@
                                 <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">INICIO</a>
                                 <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/productoslista">PRODUCTOS</a>
-                            </li>
+                                <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
+                                 <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}" style="color: seagreen">PRODUCTOS</a>
+                        </li>
+                        <li th:if="${session.usuariosession == null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                        </li> 
                             <li th:if="${session.usuariosession == null}" class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle"

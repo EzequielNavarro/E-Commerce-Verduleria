@@ -85,7 +85,10 @@
                 </div>
             </nav>
             <!-- FINALIZA NAV -->
-
+            
+            <!-- MENSAJE ERROR EN CASO DE QUE FALLE EL REGISTRO-->
+            <p th:if="${error != null}" th:text="${error}" style="color: red" align="center"></p>
+            
              <!-- INICIO REGISTRO EN EL SISTEMA-->
             <div class="signupFrm">
                 <form action="/registrar" method="POST" class="form">
