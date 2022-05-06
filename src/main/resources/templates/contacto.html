@@ -24,7 +24,7 @@
     </head>
     <body  style="background-color: #e8e7e2e2; ">
         <header>
-            <div class="imglogo"><img src="img/LOGO TITULO.png" > </div>
+            <div class="imglogo"><img src="img/LOGO_TITULO.png" > </div>
             <!-- INICIA NAV -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -68,10 +68,10 @@
                                 </ul>
                             </li>
                             <li th:if="${session.usuariosession != null}" class="nav-item">
-                                <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}">Mi cuenta</a>
+                                <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" style="color: cornflowerblue">Mi cuenta</a>
                             </li>
                             <li th:if="${session.usuariosession != null}" class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/logout}">DESCONECTAR</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/logout}" style="color: red">DESCONECTAR</a>
                             </li>
                             <li class="nav-item"></li>
                             <a class="nav-link active" aria-current="page" href="/contacto"
