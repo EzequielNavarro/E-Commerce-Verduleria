@@ -26,7 +26,7 @@ public class MainController {
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/inicio")
     public String inicio() {
-        return "cliente/inicio.html";
+        return "inicio.html";
     }
 
     @GetMapping("/login")

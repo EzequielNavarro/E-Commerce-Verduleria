@@ -37,7 +37,7 @@ public class ClienteController {
             model.addAttribute("error", ex.getMessage());
 
         }
-        return "cliente/perfil.html";
+        return "perfilanda.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN')")
@@ -57,10 +57,10 @@ public class ClienteController {
         } catch (Exception ex) {
             model.put("error", ex.getMessage());
             model.put("perfil", cliente);
-            return "cliente/perfil.html";
+            return "perfilanda.html";
         }
         model.put("exitop", "Perfil actualizado correctamente");
-        return "cliente/inicio.html";
+        return "inicio.html";
 
     }
 }
