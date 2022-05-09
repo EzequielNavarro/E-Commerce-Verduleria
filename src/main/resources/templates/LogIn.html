@@ -91,7 +91,7 @@
       <!-- MENSAJES DE REGISTRO EXITOSO: ${exito}${ingrese} , ERROR: ${error} Y DESCONEXION/DESLOGUEO: ${logout}-->
         <div align="center">
         <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>
-        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: greenyellow"></p>
+        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: green"></p>
         <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
         <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>
         </div>
