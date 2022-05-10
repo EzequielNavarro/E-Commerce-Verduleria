@@ -129,6 +129,11 @@
         width: 80%;
     }
 }
+<!-- AJUSTAR TAMAño texto Y EMBELLECER -->
+.exito {
+
+  size: 0in;
+}
 
 .signupFrm {
     display: flex;

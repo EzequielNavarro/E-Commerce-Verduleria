@@ -57,13 +57,15 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <!-- con hasRole muestra solo el contenido segun el Rol -->
+                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administrador</a> </li></div>
                             <li class="nav-item"></li>
                             <a class="nav-link active" aria-current="page" href="/contacto"
                                >CONTACTO</a
                             >
                             <li class="nav-item"></li>
-                            <a class="nav-link active" aria-current="page" href="/carrito"
+                            <a class="nav-link active" aria-current="page" href="/getCart"
                                ><i class="fa-brands fa-shopify"></i></a>
                         </ul>
                         <form class="d-flex">
@@ -85,11 +87,11 @@
                 </div>
             </nav>
             <!-- FINALIZA NAV -->
-            
+
             <!-- MENSAJE ERROR EN CASO DE QUE FALLE EL REGISTRO-->
             <p th:if="${error != null}" th:text="${error}" style="color: red" align="center"></p>
-            
-             <!-- INICIO REGISTRO EN EL SISTEMA-->
+
+            <!-- INICIO REGISTRO EN EL SISTEMA-->
             <div class="signupFrm">
                 <form action="/registrar" method="POST" class="form">
                     <h5 class="title">Registrate</h5>
