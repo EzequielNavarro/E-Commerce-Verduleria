@@ -59,14 +59,14 @@
                         </li>
                         <!-- con hasRole muestra solo el contenido segun el Rol -->
                         <div sec:authorize="hasRole('ROLE_ADMIN')">
-                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administradorrrr</a> </li></div>
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administrador</a> </li></div>
                             
                         <li class="nav-item"></li>
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
                         <li class="nav-item"></li>
-                        <a class="nav-link active" aria-current="page" href="/carrito"
+                        <a class="nav-link active" aria-current="page" href="/getCart"
                            ><i class="fa-brands fa-shopify"></i></a>
                     </ul>
                     <form class="d-flex">
@@ -90,8 +90,8 @@
 
       <!-- MENSAJES DE REGISTRO EXITOSO: ${exito}${ingrese} , ERROR: ${error} Y DESCONEXION/DESLOGUEO: ${logout}-->
         <div align="center">
-        <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>
-        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: greenyellow"></p>
+        <p th:if="${exito != null}" th:text="${exito}" style="color: green" class="exito"></p>
+        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: greenyellow" class="exito"></p>
         <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
         <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>
         </div>
