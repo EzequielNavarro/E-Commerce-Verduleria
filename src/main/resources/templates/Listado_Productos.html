@@ -77,7 +77,7 @@
                            >CONTACTO</a
                         >
                         <li class="nav-item"></li>
-                        <a class="nav-link active" aria-current="page" href="/getCart"
+                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
                            ><i class="fa-brands fa-shopify"></i></a>
                     </ul>
                     <form class="d-flex">
@@ -148,23 +148,23 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Precio Unitario</th>
+                        <th scope="col">Precio Unidad/Kg</th>
+                        <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
+                        <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Acción</th>
-                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="producto:${lista}">
                         <td th:text="${producto.nombre}"></td>
                         <td th:text="${producto.precio}"></td>
-                        <td><a  class="btn btn-warning" th:href="@{productoslista/editproducto(id=__${producto.id}__)}">Editar</a> </td>
-                        <td><a  class="btn btn-danger" th:href="@{productoslista/delproducto(id=__${producto.id}__)}">Eliminar</a> </td>
+                        <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-warning" th:href="@{productoslista/editproducto(id=__${producto.id}__)}">Editar</a> </td>
+                        <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{productoslista/delproducto(id=__${producto.id}__)}">Eliminar</a> </td>
                         <td><form  th:action="@{/cart}" method="POST"> <input type="hidden" th:value="${producto.id}" name="id">  
                                 <div class="row"><li class="list-group-item"> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></li></div>
                       <div class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></div></form></td>
                     </tr>       
-                    <<form action="action"></form>>
+                    
                 </tbody>
             </table>
 

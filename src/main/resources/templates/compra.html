@@ -72,7 +72,7 @@
                            >CONTACTO</a
                         >
                         <li class="nav-item"></li>
-                        <a class="nav-link active" aria-current="page" href="/getCart"
+                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
                            ><i class="fa-brands fa-shopify"></i></a>
                     </ul>
                     <form class="d-flex">
@@ -126,7 +126,7 @@
 
                             <ul class="list-group">
                                 <li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
-                                <a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
+                                <a th:href="@{/order}" class="btn btn-dark">COMPRAR HERMANITO</a>
                             </ul>
                         </div>
 
