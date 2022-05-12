@@ -98,29 +98,39 @@ public class CarritoController {
         return "usuario/resumenorden";
     }
 
-  // quitar un producto del carrito
-	@GetMapping("/delete/cart/{id}")
-	public String deleteProductoCart(@PathVariable String id, Model model) {
+    // quitar un producto del carrito
+    @GetMapping("/delete/cart/{id}")
+    public String deleteProductoCart(@PathVariable String id, Model model) {
 
-		// lista nueva de prodcutos
-		List<DetalleOrden> ordenesNueva = new ArrayList<DetalleOrden>();
+        // lista nueva de prodcutos
+        List<DetalleOrden> ordenesNueva = new ArrayList<DetalleOrden>();
 
-		for (DetalleOrden detalleOrden : detalles) {
-                    if (!detalleOrden.getProductoKilo().getId().equals(id)) {
-				ordenesNueva.add(detalleOrden);
-			}
-		}
+        for (DetalleOrden detalleOrden : detalles) {
+            if (!detalleOrden.getProductoKilo().getId().equals(id)) {
+                ordenesNueva.add(detalleOrden);
+            }
+        }
 
-		// poner la nueva lista con los productos restantes
-		detalles = ordenesNueva;
+        // poner la nueva lista con los productos restantes
+        detalles = ordenesNueva;
 
-		double sumaTotal = 0;
-		sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
+        double sumaTotal = 0;
+        sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
 
-		orden.setTotal(sumaTotal);
-		model.addAttribute("cart", detalles);
-		model.addAttribute("orden", orden);
+        orden.setTotal(sumaTotal);
+        model.addAttribute("cart", detalles);
+        model.addAttribute("orden", orden);
 
-		return "compra.html";
-	}
+        return "compra.html";
+    }
+
+    @GetMapping("/comprafinal")
+    public String compraExito(ModelMap model, HttpSession session) {
+        Clientes clienteLogueado = (Clientes) session.getAttribute("usuariosession");
+        
+        model.addAttribute("cart", detalles);
+        model.addAttribute("orden", orden);
+        model.addAttribute("usuario", clienteLogueado);
+        return "compraexito.html";
+    }
 }
