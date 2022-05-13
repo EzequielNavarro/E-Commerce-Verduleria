@@ -69,7 +69,7 @@
                         <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
                            ><i class="fa-brands fa-shopify"></i></a>
                     </ul>
-                    <form class="d-flex">
+<!--                    <form class="d-flex">
                         <input
                             class="form-control me-2"
                             type="Buscar"
@@ -83,19 +83,19 @@
                             >
                             <i class="fa-solid fa-magnifying-glass"> </i>
                         </button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </nav>
 
-      <!-- MENSAJES DE REGISTRO EXITOSO: ${exito}${ingrese} , ERROR: ${error} Y DESCONEXION/DESLOGUEO: ${logout}-->
+      <!-- MENSAJES DE REGISTRO EXITOSO: ${exito}${ingrese},ERROR: ${error}, ${cart} Y DESCONEXION/DESLOGUEO: ${logout}-->
         <div align="center">
 
-        <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>
-        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: green"></p>
-
-        <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
-        <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>
+        <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>    <!-- "Se ha registrado en nuestro sistema correctamente" -->
+        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: green"></p><!-- "Ahora puede ingresar" -->
+        <p th:if="${cart != null}" th:text="${cart}" style="color: red"></p>        <!-- "Ingrese para poder añadir productos al carrito de compra" -->
+        <p th:if="${error != null}" th:text="${error}" style="color: red"></p>      <!-- "Usuario o Contraseña incorrectos" -->
+        <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>    <!-- "Desconectado correctamente" -->
         </div>
         
         

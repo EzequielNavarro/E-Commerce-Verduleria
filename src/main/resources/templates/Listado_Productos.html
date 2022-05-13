@@ -76,11 +76,15 @@
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
-                        <li class="nav-item"></li>
                         <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i></a>
+                           ><i class="fa-brands fa-shopify"></i>CARRITO</a>
+                           <li class="nav-item"></li>
+                           
+                        <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
+                           ></a
+                        >
                     </ul>
-                    <form class="d-flex">
+<!--                    <form class="d-flex">
                         <input
                             class="form-control me-2"
                             type="Buscar"
@@ -94,48 +98,51 @@
                             >
                             <i class="fa-solid fa-magnifying-glass"> </i>
                         </button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </nav>
         <!--FINALIZA NAV-->
+        
+        <p align="center" th:if="${addcart != null}" th:text="${addcart}" style="color: green"></p> <!-- "Producto agregado al carrito correctamente" -->
+        
         <!--INICIO GALERIA -->
         <div class="galeria">
             <h1>NUESTROS PRODUCTOS</h1>
             <br>
             <div class="contenedor-imagenes">
                 <div class="imagen">
-                    <img src= "/img/cherry.jpeg" alt="" >
+                    <img src= "/img/cherry.jpeg" alt="" href="/getCart">
                     <div class="overlay" >
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a>  
                     </div>
                 </div>
                 <div class="imagen">
-                    <img src="/img/banana.jpg" alt="" href="Carrito.html">
+                    <img src="/img/banana.jpg" alt="" href="/getCart">
                     <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div>
                 </div>
                 <div class="imagen">
-                    <img src="/img/frutillas.jpeg" alt="" href="Carrito.">
+                    <img src="/img/frutillas.jpeg" alt="" href="/getCart">
                     <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div>
                 </div>
                 <div class="imagen">
-                    <img src="/img/BROCOLI .jpg" alt="" href="Carrito.">
+                    <img src="/img/BROCOLI .jpg" alt="" href="/getCart">
                     <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div>
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras.jpeg" alt="" href="Carrito.">
+                    <img src="/img/verduras.jpeg" alt="" href="/getCart">
                     <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div>
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras2.jpeg" alt="" href="Carrito.">
+                    <img src="/img/verduras2.jpeg" alt="" href="/getCart">
                     <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div>
@@ -152,6 +159,7 @@
                         <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
                         <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
                         <th scope="col">Cantidad</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,9 +168,23 @@
                         <td th:text="${producto.precio}"></td>
                         <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-warning" th:href="@{productoslista/editproducto(id=__${producto.id}__)}">Editar</a> </td>
                         <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{productoslista/delproducto(id=__${producto.id}__)}">Eliminar</a> </td>
-                        <td><form  th:action="@{/cart}" method="POST"> <input type="hidden" th:value="${producto.id}" name="id">  
+                        
+                        <!--Version vieja -->
+<!--                        <td th:if="${session.usuariosession != null}"><form th:action="@{/cart}" method="POST"> <input type="hidden" th:value="${producto.id}" name="id">  
                                 <div class="row"><li class="list-group-item"> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></li></div>
-                      <div class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></div></form></td>
+                      <div class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></div></form></td>-->
+                      
+                        <!--Version nueva -->
+                <form th:if="${session.usuariosession == null}" th:action="@{/login}" method="GET"><input type="hidden" name="cart">  
+                    <td> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></td>
+                    <td class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></td>
+                </form>
+                
+                 <form th:if="${session.usuariosession != null}" th:action="@{/cart}" method="POST"><input type="hidden" th:value="${producto.id}" name="id">  
+                    <td> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></td>
+                    <td class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></td>
+                </form>
+                      
                     </tr>       
                     
                 </tbody>

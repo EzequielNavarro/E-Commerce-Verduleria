@@ -84,11 +84,15 @@
                             <a class="nav-link active" aria-current="page" href="/contacto"
                                >CONTACTO</a
                             >
-                            <li class="nav-item"></li>
-                            <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                               ><i class="fa-brands fa-shopify"></i></a>
+                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
+                           ><i class="fa-brands fa-shopify"></i>CARRITO</a>
+                           <li class="nav-item"></li>
+                           
+                        <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
+                           ></a
+                        >
                         </ul>
-                        <form class="d-flex">
+<!--                        <form class="d-flex">
                             <input
                                 class="form-control me-2"
                                 type="Buscar"
@@ -102,7 +106,7 @@
                                 >
                                 <i class="fa-solid fa-magnifying-glass"> </i>
                             </button>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </nav>

@@ -70,9 +70,14 @@
                         >
                         <li class="nav-item"></li>
                         <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i></a>
+                           ><i class="fa-brands fa-shopify"></i>CARRITO</a>
+                           <li class="nav-item"></li>
+                           
+                        <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
+                           ></a
+                        >
                     </ul>
-                    <form class="d-flex">
+<!--                    <form class="d-flex">
                         <input
                             class="form-control me-2"
                             type="Buscar"
@@ -86,14 +91,14 @@
                             >
                             <i class="fa-solid fa-magnifying-glass"> </i>
                         </button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </nav>
         <!--FINALIZA NAV-->
         
         <!-- MENSAJE DE EXITO EDITAR PERFIL -->
-        <h6 th:if="${exitop != null}" th:text="${exitop}" style="color: green" align="center"></h6>
+        <h6 th:if="${exitop != null}" th:text="${exitop}" style="color: green" align="center"></h6>  <!-- "Perfil actualizado correctamente" -->
         <!-- MENSAJE DE EXITO EDITAR PERFIL -->
         
         <div
