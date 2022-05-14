@@ -41,8 +41,16 @@ public class ServicioClientes implements UserDetailsService {
         if (dni == null || dni < 1) {
             throw new Exception("El dni no es valido");
         }
+        Clientes clienteBuscadoDni = repositorioClientes.buscarPorDNI(dni);
+        if (clienteBuscadoDni != null) {
+            throw new Exception("El DNI ingresado ya existe");
+        }
         if (correo == null || correo.trim().isEmpty()) {
             throw new Exception("Correo invalido");
+        }
+        Clientes clienteBuscadoCorreo = repositorioClientes.buscarPorMail(correo);
+        if (clienteBuscadoCorreo != null) {
+            throw new Exception("Correo ya existente");
         }
     }
 
