@@ -18,6 +18,8 @@
             src="https://kit.fontawesome.com/95d9d592a6.js"
             crossorigin="anonymous"
         ></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <title>V D P</title>
     </head>
     <body style="background-color: #e8e7e2e2">
@@ -68,13 +70,21 @@
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
-                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i>CARRITO</a>
-                           <li class="nav-item"></li>
-                           
+                        <li class="nav-item">
+                            <a
+                              th:if="${session.usuariosession != null}"
+                              class="nav-link active"
+                              aria-current="page"
+                              href="/getCart"
+                              ><span class="material-symbols-outlined">
+                                shopping_cart
+                              </span></a
+                            >
+                          </li>
+                          <li class="nav-item"></li> 
                         <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
                            ></a
-                        >
+                        ></li>
                         
                     </ul>
 <!--                    <form class="d-flex">
@@ -98,29 +108,37 @@
                 </header>
         <!--FINALIZA NAV-->
 <!--EMPIEZA TICKET-->
-     <h3>Verduleria del Pueblo</h3>
-        <table >            
+     <h3 align="center">Verduleria del Pueblo</h3>
+     <h6 align="center" style="color: rgb(11, 169, 103)">Compra Exitosa</h6>
+        <table class="bordes">            
                 <tr>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Subtotal</th>
                 </tr>
                 <tr th:each="dorden:${cart}">
-                    <td th:text="${dorden.nombre}"> nombre</td>
-                    <td th:text="${dorden.cantidad}">cantidad</td>
-                    <td th:text="${dorden.total}">subtotal</td>
+                    <td th:text="${dorden.nombre}" class="bord"></td>
+                    <td th:text="${dorden.cantidad}" class="bord"></td>
+                    <td th:text="${dorden.total}" class="bord"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                   <td></td>
                     <td>Total:</td>
-                    <td rowspan="2" th:text="${orden.total}">Valor</td>
+                    <td rowspan="2" th:text="${orden.total}"></td>
                 </tr>
     
         </table>
         
     <style>
-        table,th,td{
-            border: 1px solid black;
+        .bordes{
+            display: flex;
+            justify-content: center;
+        }
+        tr,th{
+            border: 1px solid black; 
+        }
+        .bord{
+            border: 1px solid black; 
         }
     </style>
 <!-- FINALIZA TICKET-->

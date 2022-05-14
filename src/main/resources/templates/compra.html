@@ -19,6 +19,8 @@
             src="https://kit.fontawesome.com/95d9d592a6.js"
             crossorigin="anonymous"
         ></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <title>V D P</title>
     </head>
       <body style="background-color: #e8e7e2e2">
@@ -71,13 +73,21 @@
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
-                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i>CARRITO</a>
-                           <li class="nav-item"></li>
-                           
+                        <li class="nav-item">
+                            <a
+                              th:if="${session.usuariosession != null}"
+                              class="nav-link active"
+                              aria-current="page"
+                              href="/getCart"
+                              ><span class="material-symbols-outlined">
+                                shopping_cart
+                              </span></a
+                            >
+                          </li>
+                          <li class="nav-item">  
                         <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
                            ></a
-                        >
+                        ></li>
                     </ul>
 <!--                    <form class="d-flex">
                         <input

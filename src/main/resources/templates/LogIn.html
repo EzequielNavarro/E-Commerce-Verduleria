@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <title>LOGIN</title>
 </head>
@@ -65,9 +66,17 @@
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
-                        <li class="nav-item"></li>
-                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i></a>
+                        <li class="nav-item">
+                            <a
+                              th:if="${session.usuariosession != null}"
+                              class="nav-link active"
+                              aria-current="page"
+                              href="/getCart"
+                              ><span class="material-symbols-outlined">
+                                shopping_cart
+                              </span></a
+                            >
+                          </li>
                     </ul>
 <!--                    <form class="d-flex">
                         <input
@@ -91,11 +100,11 @@
       <!-- MENSAJES DE REGISTRO EXITOSO: ${exito}${ingrese},ERROR: ${error}, ${cart} Y DESCONEXION/DESLOGUEO: ${logout}-->
         <div align="center">
 
-        <p th:if="${exito != null}" th:text="${exito}" style="color: green"></p>    <!-- "Se ha registrado en nuestro sistema correctamente" -->
-        <p th:if="${ingrese != null}" th:text="${ingrese}" style="color: green"></p><!-- "Ahora puede ingresar" -->
-        <p th:if="${cart != null}" th:text="${cart}" style="color: red"></p>        <!-- "Ingrese para poder añadir productos al carrito de compra" -->
-        <p th:if="${error != null}" th:text="${error}" style="color: red"></p>      <!-- "Usuario o Contraseña incorrectos" -->
-        <p th:if="${logout != null}" th:text="${logout}" style="color: red"></p>    <!-- "Desconectado correctamente" -->
+        <strong th:if="${exito != null}" th:text="${exito}" style="color: rgb(11, 169, 103)"></strong>    <!-- "Se ha registrado en nuestro sistema correctamente" -->
+        <strong th:if="${ingrese != null}" th:text="${ingrese}" style="color: rgb(11, 169, 103)"></strong><!-- "Ahora puede ingresar" -->
+        <strong th:if="${cart != null}" th:text="${cart}" style="color: red"></strong>        <!-- "Ingrese para poder añadir productos al carrito de compra" -->
+        <strong th:if="${error != null}" th:text="${error}" style="color: red"></strong>      <!-- "Usuario o Contraseña incorrectos" -->
+        <strong th:if="${logout != null}" th:text="${logout}" style="color: rgb(11, 169, 103)"></strong>    <!-- "Desconectado correctamente" -->
         </div>
         
         
