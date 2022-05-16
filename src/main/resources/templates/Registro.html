@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <title>REGISTRO</title>
     </head>
     <body  style="background-color: #e8e7e2e2; ">
@@ -64,11 +66,19 @@
                             <a class="nav-link active" aria-current="page" href="/contacto"
                                >CONTACTO</a
                             >
-                            <li class="nav-item"></li>
-                            <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                               ><i class="fa-brands fa-shopify"></i></a>
+                            <li class="nav-item">
+                                <a
+                                  th:if="${session.usuariosession != null}"
+                                  class="nav-link active"
+                                  aria-current="page"
+                                  href="/getCart"
+                                  ><span class="material-symbols-outlined">
+                                    shopping_cart
+                                  </span></a
+                                >
+                              </li>
                         </ul>
-                        <form class="d-flex">
+<!--                        <form class="d-flex">
                             <input
                                 class="form-control me-2"
                                 type="Buscar"
@@ -82,14 +92,14 @@
                                 >
                                 <i class="fa-solid fa-magnifying-glass"> </i>
                             </button>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </nav>
             <!-- FINALIZA NAV -->
 
             <!-- MENSAJE ERROR EN CASO DE QUE FALLE EL REGISTRO-->
-            <p th:if="${error != null}" th:text="${error}" style="color: red" align="center"></p>
+            <p style="color: red" align="center"><strong th:if="${error != null}" th:text="${error}"></p></strong>
 
             <!-- INICIO REGISTRO EN EL SISTEMA-->
             <div class="signupFrm">
@@ -110,12 +120,12 @@
                         <label for="" class="label">Ingrese DNI</label>
                     </div>
                     <div class="inputContainer">
-                        <input type="text" name="clave" class="input" placeholder="Ingrese contraseña"required>
+                        <input type="password" name="clave" class="input" placeholder="Ingrese contraseña"required>
                         <label for="" class="label">Contraseña</label>
                     </div>
 
                     <div class="inputContainer">
-                        <input type="text" name="clave2" class="input" placeholder="Contraseña"required>
+                        <input type="password" name="clave2" class="input" placeholder="Contraseña"required>
                         <label for="" class="label">Confirme Contraseña</label>
                     </div>
 
@@ -135,7 +145,7 @@
                         <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
                         <li class="list-inline-item"><a href="#">Nosotros</a></li>
                         <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                        <li class="list-inline-item"><a href="#">Términos</a></li>
+                        
                     </ul>
                     <p class="copyright">Verdulería del pueblo  © since 1998</p>
                 </footer>

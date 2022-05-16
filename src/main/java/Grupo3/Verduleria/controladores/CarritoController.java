@@ -81,6 +81,7 @@ public class CarritoController {
 
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
+        model.addAttribute("addcart","Producto agregado al carrito correctamente");
 
         return "Listado_Productos.html";
     }

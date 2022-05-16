@@ -14,19 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AdminController {
 
     @Autowired
     private ServicioClientes ServicioClientes;
 
-    @GetMapping
-    public String dashboard(ModelMap model) {
-//        try {
-//            model.put("usuarios", ServicioClientes.findAll());
-//        } catch (Exception e) {
-//        }
-        return "/Admin";
+    @GetMapping("/admin")
+    public String admin(){
+        return "Admin.html";
     }
 
     @GetMapping("/role/{id}")

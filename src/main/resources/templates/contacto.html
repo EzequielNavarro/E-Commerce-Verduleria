@@ -19,7 +19,10 @@
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/95d9d592a6.js" crossorigin="anonymous"></script>
         <!-- Jquery -->
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <title>CONTACTO</title>
     </head>
     <body  style="background-color: #e8e7e2e2; ">
@@ -84,11 +87,23 @@
                             <a class="nav-link active" aria-current="page" href="/contacto"
                                >CONTACTO</a
                             >
-                            <li class="nav-item"></li>
-                            <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                               ><i class="fa-brands fa-shopify"></i></a>
+                            <li class="nav-item">
+                                <a
+                                  th:if="${session.usuariosession != null}"
+                                  class="nav-link active"
+                                  aria-current="page"
+                                  href="/getCart"
+                                  ><span class="material-symbols-outlined">
+                                    shopping_cart
+                                  </span></a
+                                >
+                              </li>
+                              <li class="nav-item">  
+                        <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
+                           ></a
+                        ></li>
                         </ul>
-                        <form class="d-flex">
+<!--                        <form class="d-flex">
                             <input
                                 class="form-control me-2"
                                 type="Buscar"
@@ -102,38 +117,42 @@
                                 >
                                 <i class="fa-solid fa-magnifying-glass"> </i>
                             </button>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </nav>
             <!--  FINALIZA NAV -->
             <!-- INICIA FORMULARIO DE SUGERENCIA/CONTACTO Bootstrap -->
             <div class="container">
-                <br>
-
-                <p>Envianos tu consulta por medio de nuestro formulario de contacto. Te responderemos a la brevedad.
-                    <br>
-                    <br>
-                </p>
-                <form >
-                    <div class="mb-3 ">  
-                        <label for="mail" class="form-label">Email</label>
-                        <input type="email"  name="mail" class="form-control" id="mail" placeholder="name@example.com" required>
-                    </div>
-
-                    <button class="boton-validar" type="button" value="Validar Correo" onclick="validarCorreo(form.mail.value)">Validar correo</button>
-
-                    <div class="mb-3 ">
-                        <label for="mensaje" class="form-label">Mensaje</label>
-                        <textarea name="mensaje" class="form-control" id="mensaje" rows="3" required></textarea>
-                    </div>
-
-                    <button class="boton-enviar" type="submit">Enviar</button>
-
-                </form>  
-                <div id="res"></div> 
             </div>
-            <!-- FINALIZA FORMULARIO DE SUGERENCIA  -->
+ 
+
+    <div class="sobrenosotros">
+        <h1 style="text-align:center; font-family: 'Times New Roman', serif;" >Sobre nosotros</h1>
+         <div style="text-align:center; font-family: 'Times New Roman', serif;">				
+                <h5>Somos una familia  de programadores que además trabajamos en el rubro de las frutas & verduras hace años dedicándonos a la producción, venta mayorista, importación, exportación...</h5>
+                <h5>Queremos llegar directamente a cada hogar con alimentos naturales, frescos, de primera calidad y fundamentales en una sana alimentación.</h5>
+            
+               <h5> Verdulería del Pueblo nos mantiene en el camino del crecimiento, con esfuerzo, trabajo y mucho amor propio por lo que hacemos.
+                
+               </h5>
+            </div>
+            <br>
+            <div class="col-sm-12 text-center" style="font-family: 'Times New Roman', serif;" >
+                <H2>Muchas gracias por elegirnos.<br><B>VDP </B></h2>
+            </div>
+            <HR width="100%" style="text-align: center">
+            <h1 style="text-align:center; font-family: 'Times New Roman', serif;" >¿Cómo contactárnos?</h1>
+           <h5 style="text-align:center; font-family: 'Times New Roman', serif;"> <i class="fa-brands fa-whatsapp"></i>  WhatsApp + 54 1156876544</h5> 
+           <h1 style="text-align:center; font-family: 'Times New Roman', serif;" >Ubicación</h1>
+           <h5 style="text-align:center; font-family: 'Times New Roman', serif;"> <i class="fa-solid fa-map-location-dot"></i> Av. Dr. Ricardo Balbín 2102, San Miguel, Provincia de Buenos Aires</h5> 
+           <h1 style="text-align:center; font-family: 'Times New Roman', serif;" >Mail</h1>
+           <h5 style="text-align:center; font-family: 'Times New Roman', serif;"> <i class="fa-solid fa-at"></i> info@vdp.com.ar</h5> 
+   
+        </div>
+       <h1 style="text-align: center"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.1795888951115!2d-58.721750785274736!3d-34.54900806211136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbd78f5830881%3A0x8426975c62733b06!2sVerduleria%20del%20pueblo!5e0!3m2!1ses-419!2sar!4v1652656092571!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  </h1>
+      
+        
             <br>
             <br>
             <br>
@@ -148,7 +167,7 @@
                         <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
                         <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
                         <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                        <li class="list-inline-item"><a href="#">Términos</a></li>
+                        
                     </ul>
                     <p class="copyright">Verdulería del pueblo  © since 1998</p>
                 </footer>

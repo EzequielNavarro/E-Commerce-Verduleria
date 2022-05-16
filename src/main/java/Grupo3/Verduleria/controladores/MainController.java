@@ -30,12 +30,15 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout ,ModelMap model) {
+    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout ,@RequestParam(required = false) String cart,ModelMap model) {
         if (error != null) {
             model.put("error", "Usuario o Contraseña incorrectos");
         }
          if (logout != null) {
             model.put("logout", "Desconectado correctamente");
+        }
+         if (cart != null) {
+            model.put("cart","Ingrese para poder añadir productos al carrito de compra");
         }
         return "login.html";
     }

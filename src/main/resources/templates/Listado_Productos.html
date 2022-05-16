@@ -10,6 +10,8 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <title>PRODUCTOS</title>
     </head>
     <body style="background-color: #e8e7e2e2">
@@ -76,11 +78,24 @@
                         <a class="nav-link active" aria-current="page" href="/contacto"
                            >CONTACTO</a
                         >
-                        <li class="nav-item"></li>
-                        <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"
-                           ><i class="fa-brands fa-shopify"></i></a>
+                        <li class="nav-item">
+                            <a
+                              th:if="${session.usuariosession != null}"
+                              class="nav-link active"
+                              aria-current="page"
+                              href="/getCart"
+                              ><span class="material-symbols-outlined">
+                                shopping_cart
+                              </span></a
+                            >
+                          </li>
+                           <li class="nav-item"></li>
+                           
+                        <a th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"
+                           ></a
+                        ></li>
                     </ul>
-                    <form class="d-flex">
+<!--                    <form class="d-flex">
                         <input
                             class="form-control me-2"
                             type="Buscar"
@@ -94,56 +109,59 @@
                             >
                             <i class="fa-solid fa-magnifying-glass"> </i>
                         </button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </nav>
         <!--FINALIZA NAV-->
+        
+        <p align="center" th:if="${addcart != null}" th:text="${addcart}" style="color: green"></p> <!-- "Producto agregado al carrito correctamente" -->
+        
         <!--INICIO GALERIA -->
         <div class="galeria">
-            <h1>NUESTROS PRODUCTOS</h1>
+            <h1>Nuestros productos </h1>
             <br>
             <div class="contenedor-imagenes">
                 <div class="imagen">
-                    <img src= "/img/cherry.jpeg" alt="" >
-                    <div class="overlay" >
+               <a href="#ldp"><img src= "/img/cherry.jpeg" alt="" href="/getCart"> </a>
+         <!--            <div class="overlay" >
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a>  
-                    </div>
+                    </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/banana.jpg" alt="" href="Carrito.html">
-                    <div class="overlay">
+                    <a href="#ldp"><img src="/img/banana.jpg" alt="" href="/getCart"> </a>
+                    <!-- <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/frutillas.jpeg" alt="" href="Carrito.">
-                    <div class="overlay">
+                    <a href="#ldp"><img src="/img/frutillas.jpeg" alt="" href="/getCart"> </a>
+                   <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/BROCOLI .jpg" alt="" href="Carrito.">
-                    <div class="overlay">
+                    <a href="#ldp"><img src="/img/BROCOLI .jpg" alt="" href="/getCart"> </a>
+                   <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras.jpeg" alt="" href="Carrito.">
-                    <div class="overlay">
+                    <a href="#ldp"><img src="/img/verduras.jpeg" alt="" href="/getCart"> </a>
+                   <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras2.jpeg" alt="" href="Carrito.">
-                    <div class="overlay">
+                    <a href="#ldp"> <img src="/img/verduras2.jpeg" alt="" href="/getCart"> </a>
+                   <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
-                    </div>
+                    </div> -->
                 </div>  
             </div>
             <!--FINALIZA GALERIA-->
 
-            <h2>Listado de Productos</h2>
+            <h1 id="ldp"class="lis-pro">Listado de productos</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -152,6 +170,7 @@
                         <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
                         <th sec:authorize="hasRole('ADMIN')" scope="col">Acción</th>
                         <th scope="col">Cantidad</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,9 +179,23 @@
                         <td th:text="${producto.precio}"></td>
                         <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-warning" th:href="@{productoslista/editproducto(id=__${producto.id}__)}">Editar</a> </td>
                         <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{productoslista/delproducto(id=__${producto.id}__)}">Eliminar</a> </td>
-                        <td><form  th:action="@{/cart}" method="POST"> <input type="hidden" th:value="${producto.id}" name="id">  
+                        
+                        <!--Version vieja -->
+<!--                        <td th:if="${session.usuariosession != null}"><form th:action="@{/cart}" method="POST"> <input type="hidden" th:value="${producto.id}" name="id">  
                                 <div class="row"><li class="list-group-item"> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></li></div>
-                      <div class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></div></form></td>
+                      <div class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></div></form></td>-->
+                      
+                        <!--Version nueva -->
+                <form th:if="${session.usuariosession == null}" th:action="@{/login}" method="GET"><input type="hidden" name="cart">  
+                    <td> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></td>
+                    <td class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></td>
+                </form>
+                
+                 <form th:if="${session.usuariosession != null}" th:action="@{/cart}" method="POST"><input type="hidden" th:value="${producto.id}" name="id">  
+                    <td> Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1" max="5" value="1"></td>
+                    <td class="col-sm-2"> <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-saved" ></span> Añadir al Carrito </button></td>
+                </form>
+                      
                     </tr>       
                     
                 </tbody>
@@ -176,9 +209,9 @@
                         <li th:if="${session.usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
                         <li th:if="${session.usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
                         <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
-                        <li class="list-inline-item"><a href="#">Nosotros</a></li>
                         <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                        <li class="list-inline-item"><a href="#">Términos</a></li>
+                         <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
+                       
                     </ul>
                     <p class="copyright">Verdulería del pueblo  © since 1998</p>
                 </footer>

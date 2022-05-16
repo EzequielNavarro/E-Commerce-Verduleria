@@ -38,7 +38,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.lis-pro{
+  text-align: center;
+}
 .galeria{
     font-family: 'open sans';
 }
@@ -76,7 +78,7 @@
     object-fit: cover;
 }
 
-.overlay{
+/* .overlay{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -85,7 +87,7 @@
     height: 0;
     overflow: hidden;
     transition: .5s ease;
-}
+} */
 
 .overlay h2{
     color: #fff;
@@ -129,7 +131,7 @@
         width: 80%;
     }
 }
-<!-- AJUSTAR TAMAño texto Y EMBELLECER -->
+/* <!-- AJUSTAR TAMAño texto Y EMBELLECER --> */
 .exito {
 
   size: 0in;
@@ -317,7 +319,6 @@
 .BotonCarru{
     color: white;
     border-radius: 6px;
-    cursor: pointer;
     font-size: 15px;
     margin-top: 5px;
 
@@ -326,5 +327,3 @@
 .carousel-item{
     color: #fff;
 }
-
-
