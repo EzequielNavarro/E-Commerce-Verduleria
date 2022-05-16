@@ -119,41 +119,41 @@
         
         <!--INICIO GALERIA -->
         <div class="galeria">
-            <h1>NUESTROS PRODUCTOS</h1>
+            <h1>Nuestros productos </h1>
             <br>
             <div class="contenedor-imagenes">
                 <div class="imagen">
-                    <img src= "/img/cherry.jpeg" alt="" href="/getCart">
+               <a href="#ldp"><img src= "/img/cherry.jpeg" alt="" href="/getCart"> </a>
          <!--            <div class="overlay" >
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a>  
                     </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/banana.jpg" alt="" href="/getCart">
+                    <a href="#ldp"><img src="/img/banana.jpg" alt="" href="/getCart"> </a>
                     <!-- <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/frutillas.jpeg" alt="" href="/getCart">
+                    <a href="#ldp"><img src="/img/frutillas.jpeg" alt="" href="/getCart"> </a>
                    <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/BROCOLI .jpg" alt="" href="/getCart">
+                    <a href="#ldp"><img src="/img/BROCOLI .jpg" alt="" href="/getCart"> </a>
                    <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras.jpeg" alt="" href="/getCart">
+                    <a href="#ldp"><img src="/img/verduras.jpeg" alt="" href="/getCart"> </a>
                    <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div> -->
                 </div>
                 <div class="imagen">
-                    <img src="/img/verduras2.jpeg" alt="" href="/getCart">
+                    <a href="#ldp"> <img src="/img/verduras2.jpeg" alt="" href="/getCart"> </a>
                    <!--  <div class="overlay">
                         <a href="compra.html"> <h2>COMPRA AHORA</h2></a> 
                     </div> -->
@@ -161,7 +161,7 @@
             </div>
             <!--FINALIZA GALERIA-->
 
-            <h2 class="lis-pro">Listado de Productos</h2>
+            <h1 id="ldp"class="lis-pro">Listado de productos</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -209,9 +209,8 @@
                         <li th:if="${session.usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
                         <li th:if="${session.usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
                         <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
-                        <li class="list-inline-item"><a href="#">Nosotros</a></li>
                         <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                        <li class="list-inline-item"><a href="#">Términos</a></li>
+                       
                     </ul>
                     <p class="copyright">Verdulería del pueblo  © since 1998</p>
                 </footer>

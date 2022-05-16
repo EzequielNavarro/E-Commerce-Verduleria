@@ -319,7 +319,6 @@
 .BotonCarru{
     color: white;
     border-radius: 6px;
-    cursor: pointer;
     font-size: 15px;
     margin-top: 5px;
 
@@ -328,5 +327,3 @@
 .carousel-item{
     color: #fff;
 }
-
-
