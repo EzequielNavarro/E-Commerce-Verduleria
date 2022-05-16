@@ -42,7 +42,8 @@ public class ProductoController {
         }
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
-        return "redirect:/productoslista";
+        model.addAttribute("creacion", "Se agregó un producto correctamente");
+        return "Admin.html";
     }
 
     @GetMapping("/delproducto")
