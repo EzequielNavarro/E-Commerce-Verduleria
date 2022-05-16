@@ -42,7 +42,7 @@ public class ProductoController {
         }
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
-        return "Listado_Productos.html";
+        return "redirect:/productoslista";
     }
 
     @GetMapping("/delproducto")
@@ -54,7 +54,7 @@ public class ProductoController {
         }
         List<ProductoKilo> listaKilo = servicioKilo.findAll();
         model.addAttribute("lista", listaKilo); // muestra la lista
-        return "Listado_Productos.html";
+        return "redirect:/productoslista";
     }
 
     @GetMapping("/editproducto")
