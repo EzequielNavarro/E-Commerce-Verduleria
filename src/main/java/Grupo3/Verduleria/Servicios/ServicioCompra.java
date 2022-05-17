@@ -1,11 +1,9 @@
 package Grupo3.Verduleria.Servicios;
-
 import Grupo3.Verduleria.Entidades.Clientes;
 import Grupo3.Verduleria.Entidades.Compra;
 import Grupo3.Verduleria.Entidades.ProductoKilo;
 import Grupo3.Verduleria.Repositorios.RepositorioCompra;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

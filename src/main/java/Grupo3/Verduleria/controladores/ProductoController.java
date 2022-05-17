@@ -63,7 +63,7 @@ public class ProductoController {
         ProductoKilo PK = servicioKilo.BuscarById(id);
         model.put("producto", PK);
         model.put("titulo", "Editar Producto");
-        return "Admin.html";
+        return "redirect:/productoslista";
     }
 
     @PostMapping("/modproducto")

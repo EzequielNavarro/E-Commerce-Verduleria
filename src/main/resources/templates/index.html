@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +11,6 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://kit.fontawesome.com/95d9d592a6.js" crossorigin="anonymous" ></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
         <title>V D P</title>
     </head>
     <body style="background-color: #e8e7e2e2">
@@ -20,92 +18,54 @@
             <div class="imglogo"><img  src="/img/LOGO_TITULO.png"/></div>
         </header>
         <!--INICIA NAV-->
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><strong> V D P </strong> </a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">                         
                             <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
-                             <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">INICIO</a>
+                            <a th:if="${session.usuariosession == null}" class="nav-link active" aria-current="page" th:href="@{/}">INICIO</a>
                         </li>
-
-                                <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
-                                 <li th:if="${session.usuariosession != null}" class="nav-item">
+                        <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
+                        <li th:if="${session.usuariosession != null}" class="nav-item">
                             <a class="nav-link" th:href="@{/productoslista}" style="color: seagreen">PRODUCTOS</a>
                         </li>
                         <li th:if="${session.usuariosession == null}" class="nav-item">
                             <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
                         </li> 
-                        
                         <li th:if="${session.usuariosession != null}" class="nav-item">
-                            <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" style="color: cornflowerblue">Mi cuenta</a>
+                            <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" style="color: cornflowerblue">MI CUENTA</a>
                         </li>
-                         <li th:if="${session.usuariosession == null}" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false">INGRESO AL SISTEMA</a>
-                             
+                        <li th:if="${session.usuariosession == null}" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">INGRESO AL SISTEMA</a>
                             <ul class="dropdown-menu" aria-labelledby="INGRESO AL SISTEMA">
                                 <li><a class="dropdown-item" href="/login">Ya soy usuario</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="/registro">Quiero registrarme</a>
-                                </li>
+                                <li><a class="dropdown-item" href="/registro">Quiero registrarme</a></li>
                             </ul>
                         </li>
                         <li th:if="${session.usuariosession != null}" class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/logout" style="color: red">DESCONECTAR</a>
                         </li>
-                        
                         <!-- con hasRole muestra solo el contenido segun el Rol -->
                         <div sec:authorize="hasRole('ROLE_ADMIN')">
-                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">Administrador</a> </li>
+                            <li  class="nav-item"> <a class="nav-link active" aria-current="page" href="/admin">ADMINISTRADOR</a> </li>
                         </div>
-                        
                         <li class="nav-item"></li>
-                        <a class="nav-link active" aria-current="page" href="/contacto"
-                           >CONTACTO</a
-                        >
+                        <a class="nav-link active" aria-current="page" href="/contacto">CONTACTO</a>
                         <li class="nav-item">
-                            <a
-                              th:if="${session.usuariosession != null}"
-                              class="nav-link active"
-                              aria-current="page"
-                              href="/getCart"
-                              ><span class="material-symbols-outlined">
-                                shopping_cart
-                              </span></a
-                            >
-                          </li>
+                            <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"><span class="material-symbols-outlined">shopping_cart</span></a>
+                        </li>
                     </ul>
-<!--                    <form class="d-flex">
-                        <input
-                            class="form-control me-2"
-                            type="Buscar"
-                            placeholder="Buscar"
-                            aria-label="Buscar"
-                            />
-                        <button
-                            class="btn btn-outline-success"
-                            type="submit"
-                            style="color: #9a1c1cb8"
-                            >
-                            <i class="fa-solid fa-magnifying-glass"> </i>
-                        </button>
-                    </form>-->
+                    <!--      <form class="d-flex">
+                                            <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar"/>
+                                            <button class="btn btn-outline-success" type="submit" style="color: #9a1c1cb8">
+                                                <i class="fa-solid fa-magnifying-glass"> </i>
+                                            </button>
+                                        </form>-->
                 </div>
             </div>
         </nav>
@@ -136,47 +96,34 @@
                         <a class="BotonCarru" href="/productoslista"> REALIZA TU PEDIDO</a>
                     </div>
                 </div>
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev"
-                    >
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next"
-                    >
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-<!--Termina Carrousel -->
-
-<h2> No olvides registrarte para poder tener tu pedido!</h2>
-
-        <!--INICIO FOOTER-->
-        <div class="footer-basic">
-            <footer>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="/">Inicio</a></li>
-                    <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
-                    <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
-                    <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
-                   
-                </ul>
-                <p class="copyright">Verdulería del pueblo  © since 1998</p>
-            </footer>
-            <!--FINALIZA FOOTER-->
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
-        <script src="js/envioSugerencias.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-</body>
-
+            <!--Termina Carrousel -->
+            <h2> No olvides registrarte para poder tener tu pedido!</h2>
+            <!--INICIO FOOTER-->
+            <div class="footer-basic">
+                <footer>
+                    <ul class="list-inline">
+                        <li th:if="${session.usuariosession == null}" class="list-inline-item"><a href="/">Inicio</a></li>
+                        <li th:if="${session.usuariosession != null}" class="list-inline-item"><a href="/inicio">Inicio</a></li>
+                        <li class="list-inline-item"><a href="/productoslista">Productos</a></li>
+                        <li class="list-inline-item"><a href="/contacto">Contacto</a></li>
+                        <li class="list-inline-item"> <div class="social"><a href="https://www.instagram.com/vdp_arg/"><i class="icon ion-social-instagram"></i></a> </div></li>
+                    </ul>
+                    <p class="copyright">Verdulería del pueblo  © since 1998</p>
+                </footer>
+                <!--FINALIZA FOOTER-->
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>   
+            <script src="js/envioSugerencias.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>

@@ -1,282 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/estilos/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/95d9d592a6.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/estilos/style.css" />
+        <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/><link rel="stylesheet" href="assets/css/style.css"/> <script src="https://kit.fontawesome.com/95d9d592a6.js" crossorigin="anonymous"></script>
+        <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+        <title>Admin</title>
+    </head>
+    <body style="background-color: #e8e7e2e2">
+        <header>
+            <div class="imglogo"><img src="/img/LOGO_TITULO.png" /></div>
+        </header>
+        <!--INICIA NAV-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><strong> V D P </strong> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/inicio}">INICIO</a>
+                        </li>
+                        <!--     <li th:if="${usuariosession == null}" class="nav-item">
+                                                <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                                                  </li>-->
 
-    <title>Admin</title>
-  </head>
-  <body style="background-color: #e8e7e2e2">
-    <header>
-      <div class="imglogo"><img src="/img/LOGO_TITULO.png" /></div>
-    </header>
-    <!--INICIA NAV-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><strong> V D P </strong> </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                th:href="@{/inicio}"
-                >INICIO</a
-              >
-            </li>
-            <!--     <li th:if="${usuariosession == null}" class="nav-item">
-                                    <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
-                                      </li>-->
-
-            <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
-            <li th:if="${session.usuariosession != null}" class="nav-item">
-              <a
-                class="nav-link"
-                th:href="@{/productoslista}"
-                style="color: seagreen"
-                >PRODUCTOS</a
-              >
-            </li>
-            <li th:if="${session.usuariosession == null}" class="nav-item">
-              <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
-            </li>
-            <li th:if="${session.usuariosession != null}" class="nav-item">
-              <a
-                class="nav-link"
-                th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}"
-                style="color: cornflowerblue"
-                >Mi cuenta</a
-              >
-            </li>
-            <li th:if="${session.usuariosession != null}" class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="/logout"
-                style="color: red"
-                >DESCONECTAR</a
-              >
-            </li>
-            <!-- con hasRole muestra solo el contenido segun el Rol -->
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/admin"
-                  >Administrador</a
-                >
-              </li>
+                        <!-- BOTON PRODUCTOS EN VERDE SI ESTA LOGUEADO -->
+                        <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}" style="color: seagreen">PRODUCTOS</a>
+                        </li>
+                        <li th:if="${session.usuariosession == null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/productoslista}">PRODUCTOS</a>
+                        </li>
+                        <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" style="color: cornflowerblue">Mi cuenta</a>
+                        </li>
+                        <li th:if="${session.usuariosession != null}" class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/logout" style="color: red">DESCONECTAR</a>
+                        </li>
+                        <!-- con hasRole muestra solo el contenido segun el Rol -->
+                        <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/admin">Administrador</a>
+                            </li>
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/contacto">CONTACTO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:if="${session.usuariosession != null}" class="nav-link active" aria-current="page" href="/getCart"><span class="material-symbols-outlined"> shopping_cart </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a  th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre}" class="nav-link active" aria-current="page" href="#"></a>
+                        </li>
+                    </ul>
+                    <!--  <form class="d-flex
+                                  <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar"/>
+                                  <button class="btn btn-outline-success" type="submit" style="color: #9a1c1cb8">
+                                      <i class="fa-solid fa-magnifying-glass"> </i>
+                                  </button>
+                              </form>-->
+                </div>
             </div>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/contacto"
-                >CONTACTO</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                th:if="${session.usuariosession != null}"
-                class="nav-link active"
-                aria-current="page"
-                href="/getCart"
-                ><span class="material-symbols-outlined">
-                  shopping_cart
-                </span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                th:if="${session.usuariosession != null}"
-                th:text="${session.usuariosession.nombre}"
-                class="nav-link active"
-                aria-current="page"
-                href="#"
-              ></a>
-            </li>
-          </ul>
-          <!--                    <form class="d-flex">
-                        <input
-                            class="form-control me-2"
-                            type="Buscar"
-                            placeholder="Buscar"
-                            aria-label="Buscar"
-                            />
-                        <button
-                            class="btn btn-outline-success"
-                            type="submit"
-                            style="color: #9a1c1cb8"
-                            >
-                            <i class="fa-solid fa-magnifying-glass"> </i>
-                        </button>
-                    </form>-->
-        </div>
-      </div>
-    </nav>
-    <!--FINALIZA NAV-->
-    <h2 th:if="${titulo != null}" th:text="${titulo}"></h2>
-    <h2 th:if="${titulo == null}">Crear Producto</h2>
-    <!--EMPIEZA FORM CREAR PRODUCTO-->
-    <p th:if="${creacion != null}" th:text="${creacion}" style="color: green"></p>
-    <form
-      class="form-horizontal"
-      th:if="${producto == null}"
-      th:action="@{/productoslista/addproducto}"
-      method="post"
-    >
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="nombre"
-            name="nombre"
-            placeholder="Ingrese el nombre del producto"
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="precio">Precio:</label>
-        <div class="col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            step="any"
-            id="precio"
-            name="precio"
-            placeholder="Ingrese el precio del producto"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
-        <div class="col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            id="cantidad"
-            name="kilo"
-            placeholder="Ingrese la cantidad del producto"
-          />
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-saved"></span> Guardar
-          </button>
-        </div>
-      </div>
-    </form>
-    <!-- FIN FORMULARIO ADD-->
-    <!-- INICIO FORMULARIO EDIT-->
-    <form
-      class="form-horizontal"
-      th:if="${producto != null}"
-      th:action="@{/productoslista/modproducto}"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <input type="hidden" name="id" th:value="${producto.id}" />
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="nombre"
-            name="nombre"
-            placeholder="Ingrese el nombre del producto"
-            th:value="${producto.nombre}"
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="precio">Precio:</label>
-        <div class="col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            step="any"
-            id="precio"
-            name="precio"
-            placeholder="Ingrese el precio del producto"
-            required
-            th:value="${producto.precio}"
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
-        <div class="col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            id="cantidad"
-            name="kilo"
-            placeholder="Ingrese la cantidad del producto"
-            required
-            th:value="${producto.kilo}"
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="img">Imagen:</label>
-        <div class="col-sm-10">
-          <input type="file" class="form-control-file" id="img" name="img" />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-saved"></span> Editar
-          </button>
-        </div>
-      </div>
-    </form>
-    <!--TERMINA FORM EDIT-->
-    
-  </body>
+        </nav>
+        <!--FINALIZA NAV-->
+        <h2 th:if="${titulo != null}" th:text="${titulo}"></h2>
+        <h2 th:if="${titulo == null}">Crear Producto</h2>
+        <!--EMPIEZA FORM CREAR PRODUCTO-->
+        <p th:if="${creacion != null}" th:text="${creacion}" style="color: green"></p>
+        <form class="form-horizontal" th:if="${producto == null}" th:action="@{/productoslista/addproducto}" method="post">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+                <div class="col-sm-10">
+                    <input   type="text"  class="form-control" id="nombre"  name="nombre" placeholder="Ingrese el nombre del producto" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="precio">Precio:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" step="any" id="precio" name="precio" placeholder="Ingrese el precio del producto" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="cantidad"  name="kilo" placeholder="Ingrese la cantidad del producto"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-saved"></span> Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- FIN FORMULARIO ADD-->
+        <!-- INICIO FORMULARIO EDIT-->
+        <form class="form-horizontal" th:if="${producto != null}" th:action="@{/productoslista/modproducto}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:value="${producto.id}" />
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto" th:value="${producto.nombre}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="precio">Precio:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" step="any" id="precio" name="precio" placeholder="Ingrese el precio del producto" required th:value="${producto.precio}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="cantidad" name="kilo" placeholder="Ingrese la cantidad del producto" required th:value="${producto.kilo}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="img">Imagen:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file" id="img" name="img" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-saved"></span> Editar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!--TERMINA FORM EDIT-->
+    </body>
 </html>

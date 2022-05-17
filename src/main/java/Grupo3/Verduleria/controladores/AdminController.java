@@ -1,8 +1,5 @@
 package Grupo3.Verduleria.controladores;
-
 import Grupo3.Verduleria.Servicios.ServicioClientes;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
