@@ -15,4 +15,7 @@ public interface RepositorioClientes  extends JpaRepository<Clientes, String> {
     
     @Query("SELECT c FROM Clientes c WHERE correo = :correo")
     public Clientes buscarPorMail(@Param("correo")String correo);
+    
+     @Query("SELECT c FROM Clientes c WHERE dni = :dni")
+    public Clientes buscarPorDni(@Param("dni")String dni);
 }

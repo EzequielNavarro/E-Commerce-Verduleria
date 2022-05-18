@@ -1,5 +1,4 @@
 package Grupo3.Verduleria.Servicios;
-
 import Grupo3.Verduleria.Entidades.ProductoKilo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +64,11 @@ public class ServicioKilo {
     }
 
      @Transactional(readOnly = true)
-    public ProductoKilo findById(String id)  throws Exception{
+    public Optional<ProductoKilo> findById(String id)  throws Exception{
+        return  repositorioKilo.findById(id);
+    }
+     @Transactional(readOnly = true)
+    public ProductoKilo BuscarById(String id)  throws Exception{
         return  repositorioKilo.getById(id);
     }
     

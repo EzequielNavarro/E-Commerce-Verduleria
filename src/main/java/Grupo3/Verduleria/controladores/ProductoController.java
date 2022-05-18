@@ -33,34 +33,46 @@ public class ProductoController {
     }
 
     @PostMapping("/addproducto")
-    public String agregar(ModelMap model, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
+    public String agregar(ModelMap model, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) throws Exception {
         try {
             servicioKilo.save(nombre, precio, kilo);
         } catch (Exception ex) {
             model.addAttribute("error", ex.getMessage());
-            return "Listado_Productos.html";
+            return "Admin.html";
         }
-
-        return "Listado_Productos.html";
+        List<ProductoKilo> listaKilo = servicioKilo.findAll();
+        model.addAttribute("lista", listaKilo); // muestra la lista
+        model.addAttribute("creacion", "Se agregó un producto correctamente");
+        return "Admin.html";
     }
 
-    @PostMapping("/delproducto")
-    public String borrar(ModelMap model, @RequestParam String id) {
+    @GetMapping("/delproducto")
+    public String borrar(ModelMap model, @RequestParam String id) throws Exception {
         try {
             servicioKilo.delete(id);
         } catch (Exception ex) {
             model.addAttribute("error", "Hubo un problema: " + ex.getMessage());
         }
-        return "Listado_Productos.html";
+        List<ProductoKilo> listaKilo = servicioKilo.findAll();
+        model.addAttribute("lista", listaKilo); // muestra la lista
+        return "redirect:/productoslista";
+    }
+
+    @GetMapping("/editproducto")
+    public String editar(ModelMap model, @RequestParam String id) throws Exception {
+        ProductoKilo PK = servicioKilo.BuscarById(id);
+        model.put("producto", PK);
+        model.put("titulo", "Editar Producto");
+        return "Admin.html";
     }
 
     @PostMapping("/modproducto")
-    public String modificar(ModelMap model, @RequestParam(required = false) String id, @RequestParam(required = false) String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
+    public String modificar(ModelMap model, @RequestParam(required = false) String id, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam Integer kilo) {
         try {
             servicioKilo.edit(id, nombre, precio, kilo);
-        } catch(Exception ex){
+        } catch (Exception ex) {
             model.addAttribute("error", ex.getMessage());
         }
-        return "Listado_Productos.html";
+        return "Admin.html";
     }
 }
